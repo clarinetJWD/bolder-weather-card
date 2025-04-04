@@ -1,22 +1,24 @@
 import { type LovelaceCard, type LovelaceCardConfig, type LovelaceCardEditor } from 'custom-card-helpers'
 import { type HassEntity } from 'home-assistant-js-websocket/dist/types'
 import { type DateTime } from 'luxon'
+import { TemplateResult, nothing } from 'lit';
+
+export type TemplateNothing = typeof nothing;
+export type Template = TemplateResult | TemplateNothing;
 
 declare global {
   interface HTMLElementTagNameMap {
-    'clock-weather-card-editor': LovelaceCardEditor
+    'bolder-weather-card-editor': LovelaceCardEditor
     'hui-error-card': LovelaceCard
   }
 }
 
-export interface ClockWeatherCardConfig extends LovelaceCardConfig {
+export interface BolderWeatherCardConfig extends LovelaceCardConfig {
   entity: string
   title?: string
   sun_entity?: string
   temperature_sensor?: string
   humidity_sensor?: string
-  weather_icon_type?: 'fill' | 'line'
-  animated_icon?: boolean
   forecast_rows?: number
   locale?: string
   time_format?: '12' | '24'
@@ -33,16 +35,16 @@ export interface ClockWeatherCardConfig extends LovelaceCardConfig {
   show_decimal?: boolean
   apparent_sensor?: string
   aqi_sensor?: string
+  aqi_use_color?: boolean
+  use_day_night_colors?: boolean
 }
 
-export interface MergedClockWeatherCardConfig extends LovelaceCardConfig {
+export interface MergedBolderWeatherCardConfig extends LovelaceCardConfig {
   entity: string
   title?: string
   sun_entity: string
   temperature_sensor?: string
   humidity_sensor?: string
-  weather_icon_type: 'fill' | 'line'
-  animated_icon: boolean
   forecast_rows: number
   locale?: string
   time_format?: '12' | '24'
@@ -59,6 +61,8 @@ export interface MergedClockWeatherCardConfig extends LovelaceCardConfig {
   show_decimal: boolean
   apparent_sensor?: string
   aqi_sensor?: string
+  aqi_use_color: boolean
+  use_day_night_colors: boolean
 }
 
 export const enum WeatherEntityFeature {

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 252 244.8">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #ccccb8;
+        opacity: .2;
+        stroke: #ccccb8;
+      }
+
+      .st0, .st1 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
+
+      .st2 {
+        fill: none;
+      }
+
+      .st1 {
+        fill: url(#linear-gradient);
+        stroke: #cfcfba;
+      }
+
+      .st3 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st2" width="252" height="244.8"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="-8176.9" y1="-8688.8" x2="-8043.9" y2="-8919" gradientTransform="translate(8192 -8703) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".5" stop-color="#d4d4bf"/>
+      <stop offset="1" stop-color="#b3b3a0"/>
+    </linearGradient>
+  </defs>
+  <g class="st3">
+    <circle class="st0" cx="99.3" cy="91.6" r="133.3"/>
+    <path class="st1" d="M213.1,125.5c4.9,0,9.9-.3,14.8-.8-15,57-67.3,99.2-129.8,99.2S-36.1,164.6-36.1,91.5c.4-68,51.9-124.7,119.5-131.6-2.9,10.8-4.4,22-4.5,33.2.6,73.6,60.7,132.9,134.3,132.4h-.1Z"/>
+  </g>
+</svg>

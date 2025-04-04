@@ -9,10 +9,11 @@ import gzipPlugin from 'rollup-plugin-gzip'
 
 export default [
   {
-    input: 'src/clock-weather-card.ts',
+    input: 'src/bolder-weather-card.ts',
     output: {
       dir: 'dist',
       format: 'es',
+      inlineDynamicImports: true,
     },
     plugins: [
       image(),

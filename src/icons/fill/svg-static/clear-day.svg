@@ -1,1 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"><defs><linearGradient id="a" x1="150" x2="234" y1="119.2" y2="264.8" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fbbf24"/><stop offset=".5" stop-color="#fbbf24"/><stop offset="1" stop-color="#f59e0b"/></linearGradient><symbol id="b" viewBox="0 0 384 384"><circle cx="192" cy="192" r="84" fill="url(#a)" stroke="#f8af18" stroke-miterlimit="10" stroke-width="6"/><path fill="none" stroke="#fbbf24" stroke-linecap="round" stroke-miterlimit="10" stroke-width="24" d="M192 61.7V12m0 360v-49.7m92.2-222.5 35-35M64.8 319.2l35.1-35.1m0-184.4-35-35m254.5 254.5-35.1-35.1M61.7 192H12m360 0h-49.7"/></symbol></defs><use xlink:href="#b" width="384" height="384" transform="translate(64 64)"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #fbbf24;
+        stroke-linecap: round;
+        stroke-width: 24px;
+      }
+
+      .st0, .st1 {
+        stroke-miterlimit: 10;
+      }
+
+      .st1 {
+        fill: url(#linear-gradient);
+        stroke: #f8af18;
+        stroke-width: 6px;
+      }
+
+      .st2 {
+        fill: #fff;
+        opacity: .3;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="159" y1="128.2" x2="243" y2="273.8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fbbf24"/>
+      <stop offset=".5" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <symbol id="b" viewBox="0 0 402 402">
+      <g>
+        <path class="st2" d="M201,297c-52.9,0-96-43.1-96-96s43.1-96,96-96,96,43.1,96,96-43.1,96-96,96h0Z"/>
+        <path class="st2" d="M201,402c-11.6,0-21-9.4-21-21v-49.7c0-11.6,9.4-21,21-21s21,9.4,21,21v49.7c0,11.6-9.4,21-21,21h0ZM328.4,349.2c-5.6,0-10.9-2.2-14.8-6.2l-35.1-35.1c-8.2-8.2-8.2-21.5,0-29.7,4-4,9.2-6.2,14.8-6.2s10.9,2.2,14.8,6.2l35.1,35.1c8.2,8.2,8.2,21.5,0,29.7-4,4-9.2,6.2-14.8,6.2h0ZM73.8,349.2c-5.6,0-10.9-2.2-14.8-6.2-8.2-8.2-8.2-21.5,0-29.7l35.1-35.1c4-4,9.2-6.2,14.8-6.2s10.9,2.2,14.8,6.2c8.2,8.2,8.2,21.5,0,29.7l-35.1,35.1c-4,4-9.2,6.2-14.8,6.2h0ZM381,222h-49.7c-11.6,0-21-9.4-21-21s9.4-21,21-21h49.7c11.6,0,21,9.4,21,21s-9.4,21-21,21h0ZM70.7,222H21c-11.6,0-21-9.4-21-21s9.4-21,21-21h49.7c11.6,0,21,9.4,21,21s-9.4,21-21,21h0ZM293.2,129.8c-5.6,0-10.9-2.2-14.8-6.1-8.2-8.2-8.2-21.5,0-29.7l35-35c4-4,9.2-6.2,14.8-6.2s10.9,2.2,14.8,6.1c8.2,8.2,8.2,21.5,0,29.7l-35,35c-4,4-9.2,6.2-14.8,6.2h0ZM108.9,129.7c-5.6,0-10.9-2.2-14.8-6.1l-35-35c-8.2-8.2-8.2-21.5,0-29.7,4-4,9.2-6.2,14.8-6.2s10.9,2.2,14.8,6.2l35,35c8.2,8.2,8.2,21.5,0,29.7-4,4-9.2,6.2-14.8,6.2h0ZM201,91.7c-11.6,0-21-9.4-21-21V21c0-11.6,9.4-21,21-21s21,9.4,21,21v49.7c0,11.6-9.4,21-21,21h0Z"/>
+        <circle class="st1" cx="201" cy="201" r="84"/>
+        <path class="st0" d="M201,70.7V21M201,381v-49.7M293.2,108.8l35-35M73.8,328.2l35.1-35.1M108.9,108.7l-35-35M328.4,328.2l-35.1-35.1M70.7,201H21M381,201h-49.7"/>
+      </g>
+    </symbol>
+  </defs>
+  <g id="Layer_2">
+    <use width="402" height="402" transform="translate(55 55)" xlink:href="#b"/>
+  </g>
+</svg>

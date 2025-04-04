@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup } from 'lit'
+import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup, HTMLTemplateResult } from 'lit'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { customElement, property, state } from 'lit/decorators.js'
 import {
@@ -12,8 +12,8 @@ import {
 } from 'custom-card-helpers' // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
 
 import {
-  type ClockWeatherCardConfig,
-  type MergedClockWeatherCardConfig,
+  type BolderWeatherCardConfig,
+  type MergedBolderWeatherCardConfig,
   type MergedWeatherForecast,
   Rgb,
   type TemperatureSensor,
@@ -26,16 +26,16 @@ import {
 } from './types'
 import styles from './styles'
 import { actionHandler } from './action-handler-directive'
-import { localize } from './localize/localize'
+import localize from './localize/localize'
 import { type HassEntity, type HassEntityBase } from 'home-assistant-js-websocket'
 import { extractMostOccuring, max, min, round, roundDown, roundIfNotNull, roundUp } from './utils'
-import { animatedIcons, staticIcons } from './images'
+import { cropIcons, staticIcons } from './images'
 import { version } from '../package.json'
 import { safeRender } from './helpers'
 import { DateTime } from 'luxon'
 
 console.info(
-  `%c  CLOCK-WEATHER-CARD \n%c Version: ${version}`,
+  `%c  BOLDER-WEATHER-CARD \n%c Version: ${version}`,
   'color: orange; font-weight: bold; background: black',
   'color: white; font-weight: bold; background: dimgray'
 );
@@ -44,9 +44,9 @@ console.info(
 // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 (window as any).customCards = (window as any).customCards || [];
 (window as any).customCards.push({
-  type: 'clock-weather-card',
-  name: 'Clock Weather Card',
-  description: 'Shows the current date/time in combination with the current weather and an iOS insipired weather forecast.'
+  type: 'bolder-weather-card',
+  name: 'Bolder Weather Card',
+  description: 'A weather card that uses large text and bold images for use on mounted dashboards that are viewed from a distance.'
 })
 
 const gradientMap: Map<number, Rgb> = new Map()
@@ -58,17 +58,22 @@ const gradientMap: Map<number, Rgb> = new Map()
   .set(30, new Rgb(255, 150, 79)) // orange
   .set(40, new Rgb(255, 192, 159)) // red
 
-@customElement('clock-weather-card')
-export class ClockWeatherCard extends LitElement {
+@customElement('bolder-weather-card')
+export class BolderWeatherCard extends LitElement {
   // https://lit.dev/docs/components/properties/
   @property({ attribute: false }) public hass!: HomeAssistant
 
-  @state() private config!: MergedClockWeatherCardConfig
+  @state() private config!: MergedBolderWeatherCardConfig
   @state() private currentDate!: DateTime
   @state() private forecasts?: WeatherForecast[]
   @state() private error?: TemplateResult
   private forecastSubscriber?: () => Promise<void>
   private forecastSubscriberLock = false
+
+  public static async getConfigElement() {
+    await import('./editor');
+    return document.createElement('bolder-weather-card-editor');
+  }
 
   constructor () {
     super()
@@ -92,7 +97,7 @@ export class ClockWeatherCard extends LitElement {
   }
 
   // https://lit.dev/docs/components/properties/#accessors-custom
-  public setConfig (config?: ClockWeatherCardConfig): void {
+  public setConfig (config?: BolderWeatherCardConfig): void {
     if (!config) {
       throw this.createError('Invalid configuration.')
     }
@@ -153,34 +158,39 @@ export class ClockWeatherCard extends LitElement {
 
     const showToday = !this.config.hide_today_section
     const showForecast = !this.config.hide_forecast_section
+    const daytime = this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
+    const cardClass = this.config.use_day_night_colors ? 'bolder-weather-card-' + daytime : 'bolder-weather-card'
     return html`
-      <ha-card
+      <ha-card 
+        class="${cardClass}"
         @action=${(e: ActionHandlerEvent) => { this.handleAction(e) }}
         .actionHandler=${actionHandler({
       hasHold: hasAction(this.config.hold_action as ActionConfig | undefined),
       hasDoubleClick: hasAction(this.config.double_tap_action as ActionConfig | undefined)
     })}
         tabindex="0"
-        .label=${`Clock Weather Card: ${this.config.entity || 'No Entity Defined'}`}
+        .label=${`Bolder Weather Card: ${this.config.entity || 'No Entity Defined'}`}
       >
-        ${this.config.title
-        ? html`
-          <div class="card-header">
-            ${this.config.title}
-          </div>`
-        : ''}
         <div class="card-content">
           ${showToday
         ? html`
-            <clock-weather-card-today>
+            <bolder-weather-card-today>
               ${safeRender(() => this.renderToday())}
-            </clock-weather-card-today>`
+            </bolder-weather-card-today>`
         : ''}
+
+          ${this.config.title
+          ? html`
+            <div class="card-header">
+              ${this.config.title}
+            </div>`
+          : ''}
+
           ${showForecast
         ? html`
-            <clock-weather-card-forecast>
+            <bolder-weather-card-forecast>
               ${safeRender(() => this.renderForecast())}
-            </clock-weather-card-forecast>`
+            </bolder-weather-card-forecast>`
         : ''}
         </div>
       </ha-card>
@@ -213,37 +223,54 @@ export class ClockWeatherCard extends LitElement {
     const tempUnit = weather.attributes.temperature_unit
     const apparentTemp = this.config.show_decimal ? this.getApparentTemperature() : roundIfNotNull(this.getApparentTemperature())
     const aqi = this.getAqi()
-    const aqiColor = this.getAqiColor(aqi)
+    const aqiColorClass = this.getAqiColor(aqi)
     const humidity = roundIfNotNull(this.getCurrentHumidity())
-    const iconType = this.config.weather_icon_type
-    const icon = this.toIcon(state, iconType, false, this.getIconAnimationKind())
+    const icon = this.toIcon(state, 'crop', false)
     const weatherString = this.localize(`weather.${state}`)
-    const localizedTemp = temp !== null ? this.toConfiguredTempWithUnit(tempUnit, temp) : null
-    const localizedHumidity = humidity !== null ? `${humidity}% ${this.localize('misc.humidity')}` : null
+    const localizedTemp = temp !== null ? this.toConfiguredTempWithoutUnit(tempUnit, temp) : null
+    const localizedUnit = temp !== null ? this.getConfiguredTemperatureUnit() : null
     const localizedApparent = apparentTemp !== null ? this.toConfiguredTempWithUnit(tempUnit, apparentTemp) : null
     const apparentString = this.localize('misc.feels-like')
     const aqiString = this.localize('misc.aqi')
+    const daytime = this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
+    var topStrings = [
+      this.config.hide_date ? undefined : this.date(), 
+      this.config.hide_clock ? undefined : this.time()
+    ];
+
+    topStrings = topStrings.filter(Boolean);
+
+    var centerString = html`${localizedTemp}<span class="bolder-weather-card-temp-unit">${localizedUnit}</span>`;
+
+    var stateString = html`${weatherString}`
+    var apparentHtml = html`${apparentString} ${localizedApparent} ${this.config.show_humidity || this.config.aqi_sensor ? html`` : html``}`
+    var aqiHtml = html`${this.config.aqi_use_color ? html`<aqi-text class="${aqiColorClass}">${aqi} ${aqiString}</aqi-text>` : html`${aqi} ${aqiString}`}${this.config.show_humidity ? html`&nbsp;•&nbsp;` : html``}`
+    var humidityHtml = html`${humidity}<ha-icon icon="mdi:water-percent" style="--mdc-icon-size: var(--bolder-weather-card-bottom-text-size_internal); margin-top: -2px;" />`
+    var bottomString = html`${this.config.aqi_sensor ? aqiHtml : html``}${this.config.show_humidity ? humidityHtml : html``}`
 
     return html`
-      <clock-weather-card-today-left>
-        <img class="grow-img" src=${icon} />
-      </clock-weather-card-today-left>
-      <clock-weather-card-today-right>
-        <clock-weather-card-today-right-wrap>
-          <clock-weather-card-today-right-wrap-top>
-            ${this.config.hide_clock ? weatherString : localizedTemp ? `${weatherString}, ${localizedTemp}` : weatherString}
-            ${this.config.show_humidity && localizedHumidity ? html`<br>${localizedHumidity}` : ''}
-            ${this.config.apparent_sensor && apparentTemp ? html`<br>${apparentString}: ${localizedApparent}` : ''}
-            ${this.config.aqi_sensor && aqi !== null ? html`<br><aqi style="background-color: ${aqiColor}">${aqi} ${aqiString}</aqi>` : ''}
-          </clock-weather-card-today-right-wrap-top>
-          <clock-weather-card-today-right-wrap-center>
-            ${this.config.hide_clock ? localizedTemp ?? 'n/a' : this.time()}
-          </clock-weather-card-today-right-wrap-center>
-          <clock-weather-card-today-right-wrap-bottom>
-            ${this.config.hide_date ? '' : this.date()}
-          </clock-weather-card-today-right-wrap-bottom>
-        </clock-weather-card-today-right-wrap>
-      </clock-weather-card-today-right>`
+      <bolder-weather-card-today-left>
+        <div class="grow-img-container"><img class="grow-img today-img-crop today-img-${state}-${daytime}" src=${icon} /></div>
+      </bolder-weather-card-today-left>
+      <bolder-weather-card-today-right>
+        <bolder-weather-card-today-right-wrap>
+          <bolder-weather-card-today-right-wrap-top>
+            ${topStrings.join(" • ")}
+          </bolder-weather-card-today-right-wrap-top>
+          <bolder-weather-card-today-right-wrap-center>
+            ${centerString}
+          </bolder-weather-card-today-right-wrap-center>
+          <bolder-weather-card-today-right-wrap-bottom>
+            ${this.config.apparent_sensor ? apparentHtml : html``}
+          </bolder-weather-card-today-right-wrap-bottom>
+          <bolder-weather-card-today-right-wrap-bottom>
+            ${bottomString}
+          </bolder-weather-card-today-right-wrap-bottom>
+          <bolder-weather-card-today-right-wrap-state>
+            ${stateString}
+          </bolder-weather-card-today-right-wrap-state>
+        </bolder-weather-card-today-right-wrap>
+      </bolder-weather-card-today-right>`
   }
 
   private renderForecast (): TemplateResult[] {
@@ -276,20 +303,20 @@ export class ClockWeatherCard extends LitElement {
 
   private renderForecastItem (forecast: MergedWeatherForecast, gradientRange: Rgb[], minTemp: number, maxTemp: number, currentTemp: number | null, hourly: boolean, displayText: string, maxColOneChars: number): TemplateResult {
     const weatherState = forecast.condition === 'pouring' ? 'raindrops' : forecast.condition === 'rainy' ? 'raindrop' : forecast.condition
-    const weatherIcon = this.toIcon(weatherState, 'fill', true, 'static')
+    const weatherIcon = this.toIcon(weatherState, 'fill', true)
     const tempUnit = this.getWeather().attributes.temperature_unit
     const isNow = hourly ? DateTime.now().hour === forecast.datetime.hour : DateTime.now().day === forecast.datetime.day
     const minTempDay = Math.round(isNow && currentTemp !== null ? Math.min(currentTemp, forecast.templow) : forecast.templow)
     const maxTempDay = Math.round(isNow && currentTemp !== null ? Math.max(currentTemp, forecast.temperature) : forecast.temperature)
 
     return html`
-      <clock-weather-card-forecast-row style="--col-one-size: ${(maxColOneChars * 0.5)}rem;">
+      <bolder-weather-card-forecast-row style="--col-one-size: ${(maxColOneChars * 0.5)}rem;">
         ${this.renderText(displayText)}
         ${this.renderIcon(weatherIcon)}
         ${this.renderText(this.toConfiguredTempWithUnit(tempUnit, minTempDay), 'right')}
         ${this.renderForecastTemperatureBar(gradientRange, minTemp, maxTemp, minTempDay, maxTempDay, isNow, currentTemp)}
         ${this.renderText(this.toConfiguredTempWithUnit(tempUnit, maxTempDay))}
-      </clock-weather-card-forecast-row>
+      </bolder-weather-card-forecast-row>
     `
   }
 
@@ -414,16 +441,14 @@ export class ClockWeatherCard extends LitElement {
     }
   }
 
-  private mergeConfig (config: ClockWeatherCardConfig): MergedClockWeatherCardConfig {
+  private mergeConfig (config: BolderWeatherCardConfig): MergedBolderWeatherCardConfig {
     return {
       ...config,
       sun_entity: config.sun_entity ?? 'sun.sun',
       temperature_sensor: config.temperature_sensor,
       humidity_sensor: config.humidity_sensor,
-      weather_icon_type: config.weather_icon_type ?? 'line',
       forecast_rows: config.forecast_rows ?? 5,
       hourly_forecast: config.hourly_forecast ?? false,
-      animated_icon: config.animated_icon ?? true,
       time_format: config.time_format?.toString() as '12' | '24' | undefined,
       time_pattern: config.time_pattern ?? undefined,
       show_humidity: config.show_humidity ?? false,
@@ -436,13 +461,15 @@ export class ClockWeatherCard extends LitElement {
       time_zone: config.time_zone ?? undefined,
       show_decimal: config.show_decimal ?? false,
       apparent_sensor: config.apparent_sensor ?? undefined,
-      aqi_sensor: config.aqi_sensor ?? undefined
+      aqi_sensor: config.aqi_sensor ?? undefined,
+      aqi_use_color: config.aqi_use_color ?? true,
+      use_day_night_colors: config.use_day_night_colors ?? true
     }
   }
 
-  private toIcon (weatherState: string, type: 'fill' | 'line', forceDay: boolean, kind: 'static' | 'animated'): string {
+  private toIcon (weatherState: string, type: 'fill' | 'crop', forceDay: boolean): string {
     const daytime = forceDay ? 'day' : this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
-    const iconMap = kind === 'animated' ? animatedIcons : staticIcons
+    const iconMap = type === 'crop' ? cropIcons : staticIcons
     const icon = iconMap[type][weatherState]
     return icon?.[daytime] || icon
   }
@@ -509,12 +536,12 @@ export class ClockWeatherCard extends LitElement {
     if (aqi == null) {
       return null
     }
-    if (aqi <= 50) return 'green'
-    if (aqi <= 100) return 'yellowgreen'
-    if (aqi <= 150) return 'orange'
-    if (aqi <= 200) return 'red'
-    if (aqi <= 300) return 'purple'
-    return 'maroon'
+    if (aqi <= 50) return 'aqi-green'
+    if (aqi <= 100) return 'aqi-yellowgreen'
+    if (aqi <= 150) return 'aqi-orange'
+    if (aqi <= 200) return 'aqi-red'
+    if (aqi <= 300) return 'aqi-purple'
+    return 'aqi-maroon'
   }
 
   private getSun (): HassEntityBase | undefined {
@@ -547,10 +574,6 @@ export class ClockWeatherCard extends LitElement {
     }
 
     return this.toZonedDate(date).toFormat('t')
-  }
-
-  private getIconAnimationKind (): 'static' | 'animated' {
-    return this.config.animated_icon ? 'animated' : 'static'
   }
 
   private toCelsius (temperatueUnit: TemperatureUnit, temperature: number): number {
@@ -629,7 +652,7 @@ export class ClockWeatherCard extends LitElement {
     if (withTimeZone.isValid) {
       return withTimeZone
     }
-    console.error(`clock-weather-card - Time Zone [${timeZone}] not supported. Falling back to browser time.`)
+    console.error(`bolder-weather-card - Time Zone [${timeZone}] not supported. Falling back to browser time.`)
     return localizedDate
   }
 
@@ -694,7 +717,7 @@ export class ClockWeatherCard extends LitElement {
       }
       this.forecastSubscriber = await this.hass.connection.subscribeMessage<WeatherForecastEvent>(callback, message, options)
     } catch (e: unknown) {
-      console.error('clock-weather-card - Error when subscribing to weather forecast', e)
+      console.error('bolder-weather-card - Error when subscribing to weather forecast', e)
     } finally {
       this.forecastSubscriberLock = false
     }
@@ -751,7 +774,7 @@ export class ClockWeatherCard extends LitElement {
       return 'hourly_not_supported'
     } else {
       // !hourly && !supportsDaily
-      console.warn(`clock-weather-card - Weather entity [${this.config.entity}] does not support daily forecast. Falling back to hourly forecast.`)
+      console.warn(`bolder-weather-card - Weather entity [${this.config.entity}] does not support daily forecast. Falling back to hourly forecast.`)
       return 'hourly'
     }
   }

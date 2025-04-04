@@ -85,7 +85,7 @@ const languages: any = {
   zhtw
 }
 
-export function localize (key: string, locale: string): string {
+export default function localize (key: string, locale: string): string {
   let translated: string
   const lang = locale
     .replace(/['"]+/g, '')

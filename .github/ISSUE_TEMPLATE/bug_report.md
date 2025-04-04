@@ -16,7 +16,7 @@ assignees: ''
 
 - [ ] I updated to the latest version available
 - [ ] I cleared the cache of my browser
-- [ ] I read the [FAQ](https://github.com/pkissling/clock-weather-card#faq) and the issue I'm having was not mentioned there.
+- [ ] I read the [FAQ](https://github.com/clarinetJWD/bolder-weather-card#faq) and the issue I'm having was not mentioned there.
 
 **Release with the issue:**
 

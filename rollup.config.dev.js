@@ -7,10 +7,11 @@ import json from '@rollup/plugin-json'
 import image from '@rollup/plugin-image'
 
 export default {
-  input: ['src/clock-weather-card.ts'],
+  input: ['src/bolder-weather-card.ts'],
   output: {
     dir: './dist',
     format: 'es',
+    inlineDynamicImports: true,
   },
   plugins: [
     image(),
@@ -26,6 +27,7 @@ export default {
       contentBase: './dist',
       host: '0.0.0.0',
       port: 5001,
+      allowCrossOrigin: true,
       headers: {
         'Access-Control-Allow-Origin': '*',
       },

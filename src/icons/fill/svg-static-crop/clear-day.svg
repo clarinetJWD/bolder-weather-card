@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 345 275">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: none;
+      }
+
+      .st1 {
+        stroke: #fbbf24;
+        stroke-linecap: round;
+        stroke-width: 24px;
+      }
+
+      .st1, .st2 {
+        stroke-miterlimit: 10;
+      }
+
+      .st2 {
+        fill: url(#linear-gradient);
+        stroke: #f8af18;
+        stroke-width: 6px;
+      }
+
+      .st3 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st0" width="345" height="275"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="-8103.6" y1="-7651.1" x2="-7983.7" y2="-7859.1" gradientTransform="translate(-11062 -168.7) rotate(-135) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fbbf24"/>
+      <stop offset=".5" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <g class="st3">
+    <circle class="st2" cx="109.4" cy="35.3" r="120"/>
+    <path class="st1" d="M4.4-146.6l24.9,43M189.5,174.2l24.9,43M-72.5,140.3l43-24.9M248.2-44.8l43-24.9"/>
+    <path class="st1" d="M-100.6,35.3h49.7M269.7,35.3h49.7M109.4,245.3v-49.7M109.4-125v-49.7"/>
+    <path class="st1" d="M4.4,217.2l24.8-43M189.5-103.5l24.8-43M291.3,140.3l-43-24.8M-29.5-44.8l-43-24.8"/>
+  </g>
+</svg>

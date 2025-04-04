@@ -68,7 +68,7 @@ class ActionHandler extends HTMLElement implements ActionHandler {
     }
     element.actionHandler = true
 
-    element.addEventListener('contextmenu', (ev: Event) => {
+    /*element.addEventListener('contextmenu', (ev: Event) => {
       const e = ev || window.event
       if (e.preventDefault) {
         e.preventDefault()
@@ -79,7 +79,7 @@ class ActionHandler extends HTMLElement implements ActionHandler {
       e.cancelBubble = true
       e.returnValue = false
       return false
-    })
+    })*/
 
     const start = (ev: Event): void => {
       this.held = false
@@ -154,18 +154,18 @@ class ActionHandler extends HTMLElement implements ActionHandler {
   }
 }
 
-if (!customElements.get('action-handler-clock-weather')) {
-  customElements.define('action-handler-clock-weather', ActionHandler)
+if (!customElements.get('action-handler-bolder-weather')) {
+  customElements.define('action-handler-bolder-weather', ActionHandler)
 }
 
 const getActionHandler = (): ActionHandler => {
   const body = document.body
-  if (body.querySelector('action-handler-clock-weather')) {
+  if (body.querySelector('action-handler-bolder-weather')) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return body.querySelector('action-handler-clock-weather')!
+    return body.querySelector('action-handler-bolder-weather')!
   }
 
-  const actionhandler = document.createElement('action-handler-clock-weather')
+  const actionhandler = document.createElement('action-handler-bolder-weather')
   body.appendChild(actionhandler)
 
   return actionhandler as ActionHandler

@@ -14,7 +14,7 @@ jobs:
 
       - name: Build the file
         run: |
-          cd /home/runner/work/clock-weather-card/clock-weather-card
+          cd /home/runner/work/bolder-weather-card/bolder-weather-card
           yarn install
           yarn build
 
@@ -23,8 +23,8 @@ jobs:
 
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/clock-weather-card/clock-weather-card/dist/clock-weather-card.js
-          asset_name: clock-weather-card.js
+          file: /home/runner/work/bolder-weather-card/bolder-weather-card/dist/bolder-weather-card.js
+          asset_name: bolder-weather-card.js
           tag: ${{ github.ref }}
           overwrite: true
 
