@@ -3,10 +3,9 @@
 A [Home Assistant Dashboard Card](https://www.home-assistant.io/dashboards/) available through the [Home Assistant Community Store](https://hacs.xyz)
 showing the current date, time and a weather forecast in a bold style suitable for viewing from a distance.
 
-![Clock Weather Card](.github/assets/card.gif)
-[^1]
+![Bolder Weather Card](https://github.com/user-attachments/assets/030d0f77-f940-4818-bb01-969a96b34571)
 
-Credits go to [pkissling](https://github.com/pkissling) for the initial [Clock Weather Card](https://github.com/pkissling/clock-weather-card) that this project is based on, and [basmilius](https://github.com/basmilius) for the awesome [weather icons](https://github.com/basmilius/weather-icons).
+Credits go to [pkissling](https://github.com/pkissling) for the initial [Clock Weather Card](https://github.com/pkissling/clock-weather-card) that this project is based on, and [basmilius](https://github.com/basmilius) for the awesome [weather icons](https://github.com/basmilius/weather-icons). Many icons were modified by me to better suit this card.
 
 
 ## FAQ
@@ -21,12 +20,12 @@ Your weather provider may not provide today's weather as part of their weather f
 
 ### What does the card actually display?
 
-![image](https://user-images.githubusercontent.com/33731393/221779555-c2c25e12-4ff0-4c61-8fd7-94d5b1b214d3.png)
+![Bolder Weather Card](https://github.com/user-attachments/assets/030d0f77-f940-4818-bb01-969a96b34571)
 
 The bars represent the temperature range for a given day.
-In the above image, the 9° on Thursday represents the low across all of the forecast days and the 21° represents the highs (i.e. all bars are from 9° to 21°).
-The colored portion of the bar represents the range of temperatures that are forecast for that day (so 12° to 21° on Monday).
-The circle represents the current temperature (16° or roughly midway between 12° and 21° in your case).
+In the above image, the 47° on Tuesday represents the low across all of the forecast days and the 85° represents the highs (i.e. all bars are from 47° to 85°).
+The colored portion of the bar represents the range of temperatures that are forecast for that day (so 77° to 85° on Friday).
+The circle represents the current temperature (85° or the maximum for Friday).
 
 _Thanks to @deprecatedcoder for this text from [#143](https://github.com/pkissling/clock-weather-card/issues/143)_
 
@@ -36,13 +35,13 @@ The basic idea of the forecast bars is to be able to understand the weather tren
 
 ### Manual Installation
 
-1. Download the [clock-weather-card](https://www.github.com/pkissling/clock-weather-card/releases/latest/download/clock-weather-card.js).
+1. Download the [clock-weather-card](https://www.github.com/clarinetJWD/bolder-weather-card/releases/latest/download/bolder-weather-card.js).
 2. Place the file in your Home Assistant's `config/www` folder.
 3. Add the configuration to your `ui-lovelace.yaml`.
 
    ```yaml
    resources:
-     - url: /local/clock-weather-card.js
+     - url: /local/bolder-weather-card.js
        type: module
    ```
 
@@ -51,13 +50,14 @@ The basic idea of the forecast bars is to be able to understand the weather tren
 ### Installation and tracking with `hacs`
 
 1. Make sure the [HACS](https://github.com/custom-components/hacs) component is installed and working.
-2. Search for `clock-weather-card` in HACS and install it.
-3. Depening on whether you manage your Lovelace resources via YAML (3i) or UI (3ii), you have to add the corresponding resources.
+2. Add this repository as a custom repository `https://www.github.com/clarinetJWD/bolder-weather-card/`
+3. Search for `bolder-weather-card` in HACS and install it.
+4. Depening on whether you manage your Lovelace resources via YAML (3i) or UI (3ii), you have to add the corresponding resources.
    1. **YAML:** Add the configuration to your `ui-lovelace.yaml`.
 
       ```yaml
       resources:
-        - url: /hacsfiles/clock-weather-card/clock-weather-card.js
+        - url: /hacsfiles/bolder-weather-card/bolder-weather-card.js
           type: module
       ```
 
@@ -65,33 +65,33 @@ The basic idea of the forecast bars is to be able to understand the weather tren
       _(Alternatively go to Settings -> Dashboards -> Resources -> Add Resource)_
 
       ```yaml
-      URL: /hacsfiles/clock-weather-card/clock-weather-card.js
+      URL: /hacsfiles/bolder-weather-card/bolder-weather-card.js
       Type: JavaScript Module
       ```
 
-4. Restart Home Assistant.
-5. Add [configuration](#configuration) for the card in your `ui-lovelace.yaml` or via the UI.
+5. Restart Home Assistant.
+6. Add [configuration](#configuration) for the card in your `ui-lovelace.yaml` or via the UI.
 
 ## Configuration
 
 ### Minimal configuration
 
 ```yaml
-type: custom:clock-weather-card
+type: custom:bolder-weather-card
 entity: weather.home  # replace with your weather providers's entity id
 ```
 
 ### Full configuration
 
 ```yaml
-type: custom:clock-weather-card
+type: custom:bolder-weather-card
 entity: weather.home  # replace with your weather providers's entity id
 title: Home
 sun_entity: sun.sun
 temperature_sensor: sensor.outdoor_temp
 humidity_sensor: sensor.outdoor_humidity
 forecast_rows: 5
-locale: en-GB
+locale: en-US
 time_pattern: HH:mm
 time_format: 24
 date_pattern: ccc, d.MM.yy
@@ -106,6 +106,8 @@ time_zone: null
 show_decimal: false
 apparent_sensor: sensor.real_feel_temperature
 aqi_sensor: sensor.air_quality_index
+aqi_use_color: false
+use_day_night_colors: true
 ```
 
 ### Options
@@ -133,9 +135,11 @@ aqi_sensor: sensor.air_quality_index
 | time_zone             | string           | **Optional** | Uses the given [time zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) to indicate the current date and time. If not provided, uses the time zone configured in HA                                              | `null`    |
 | show_decimal          | boolean          | **Optional** | Displays main temperature without rounding                                                                                                                                                                                        | `false`   |
 | apparent_sensor       | string           | **Optional** | ID of the apparent temperature sensor entity. It is used to show the apparent temperature based on a sensor and will only show it if value is provided.                                                                           | `''`      |
-| aqi_sensor            | string           | **Optional** | ID of the Air Quality Index sensor entity. It is used to show the AQI based on a sensor and will only show it if value is provided.                                                                           | `''`      |
+| aqi_sensor            | string           | **Optional** | ID of the Air Quality Index sensor entity. It is used to show the AQI based on a sensor and will only show it if value is provided.                                                                                               | `''`      |
+| aqi_use_color         | boolean          | **Optional** | When true, the AQI text is colored. When false, it uses the normal bottom text color.                                                                                                                                             | `true`    |
+| use_day_night_colors  | boolean          | **Optional** | When ture, the card uses day night colors (blue, dark blue) and text colors to match. When false, uses your theme's normal colors.                                                                                                | `true`    |
+
 
 ## Footnotes
 
-[^1]: Theme used: [lovelace-ios-themes](https://github.com/basnijholt/lovelace-ios-themes).
 [^2]: Supported languages: `ar`, `bg`, `ca`, `cs`, `cy`, `da`, `de`, `el`,`en`, `es`, `et`, `fi`, `fr`, `he`, `hu`, `hr`, `id`, `is`, `it`, `ko`, `lb`, `lt`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `ro`, `ru`, `sk`, `sl`, `sr`, `sr-Latn`, `sv`, `th`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-TW`
