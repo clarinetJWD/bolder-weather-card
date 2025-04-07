@@ -11,7 +11,7 @@ export default {
   output: {
     dir: './dist',
     format: 'es',
-    inlineDynamicImports: true,
+    inlineDynamicImports: true
   },
   plugins: [
     image(),
@@ -29,18 +29,18 @@ export default {
       port: 5001,
       allowCrossOrigin: true,
       headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    }),
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
   ],
-  onwarn(warning, warn) {
+  onwarn (warning, warn) {
     if (warning.code === 'CIRCULAR_DEPENDENCY' && warning.message.includes('/luxon/')) {
       // https://github.com/moment/luxon/issues/193
-      return;
+      return
     } else if (warning.code === 'THIS_IS_UNDEFINED' && warning.id.includes('@formatjs')) {
       // https://github.com/custom-cards/custom-card-helpers/issues/64
       return
     }
-    warn(warning);
-  },
-};
+    warn(warning)
+  }
+}

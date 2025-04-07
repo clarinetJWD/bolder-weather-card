@@ -18,5 +18,5 @@
     "resolveJsonModule": true,
     "experimentalDecorators": true
   },
-  "include": ["src", "src/custom.d.ts"]
+  "include": ["src", "src/custom.d.ts", "rollup.config.dev.js", "rollup.config.js"]
 }

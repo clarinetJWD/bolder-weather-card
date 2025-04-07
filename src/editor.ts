@@ -98,8 +98,8 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
         { name: 'show_decimal', locale: this.getLocale(), selector: { boolean: {} } },
         { name: 'aqi_use_color', locale: this.getLocale(), selector: { boolean: {} } }
       ]}
-      .computeLabel=${this.computeLabel}
-      @value-changed=${this.valueChanged} 
+      .computeLabel=${(schema) => this.computeLabel(schema)}
+      @value-changed=${(event) => { this.valueChanged(event) }}
       ></ha-form>
     `
   }
