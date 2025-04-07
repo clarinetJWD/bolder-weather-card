@@ -48,6 +48,7 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
   }
 
   protected computeLabel (schema): string {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     return localize('editor.' + schema.name, schema.locale)
   }
 
