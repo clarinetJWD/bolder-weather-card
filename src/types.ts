@@ -1,10 +1,10 @@
 import { type LovelaceCard, type LovelaceCardConfig, type LovelaceCardEditor } from 'custom-card-helpers'
 import { type HassEntity } from 'home-assistant-js-websocket/dist/types'
 import { type DateTime } from 'luxon'
-import { TemplateResult, nothing } from 'lit';
+import type { TemplateResult, nothing } from 'lit'
 
-export type TemplateNothing = typeof nothing;
-export type Template = TemplateResult | TemplateNothing;
+export type TemplateNothing = typeof nothing
+export type Template = TemplateResult | TemplateNothing
 
 declare global {
   interface HTMLElementTagNameMap {

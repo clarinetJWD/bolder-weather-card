@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup, HTMLTemplateResult } from 'lit'
+import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup } from 'lit'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { customElement, property, state } from 'lit/decorators.js'
 import {
@@ -8,7 +8,8 @@ import {
   type ActionHandlerEvent,
   handleAction,
   TimeFormat,
-  type ActionConfig
+  type ActionConfig,
+  type LovelaceCardEditor
 } from 'custom-card-helpers' // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
 
 import {
@@ -70,9 +71,9 @@ export class BolderWeatherCard extends LitElement {
   private forecastSubscriber?: () => Promise<void>
   private forecastSubscriberLock = false
 
-  public static async getConfigElement() {
-    await import('./editor');
-    return document.createElement('bolder-weather-card-editor');
+  public static async getConfigElement (): Promise<LovelaceCardEditor> {
+    await import('./editor')
+    return document.createElement('bolder-weather-card-editor')
   }
 
   constructor () {
@@ -233,20 +234,21 @@ export class BolderWeatherCard extends LitElement {
     const apparentString = this.localize('misc.feels-like')
     const aqiString = this.localize('misc.aqi')
     const daytime = this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
-    var topStrings = [
-      this.config.hide_date ? undefined : this.date(), 
+    let topStrings = [
+      this.config.hide_date ? undefined : this.date(),
       this.config.hide_clock ? undefined : this.time()
-    ];
+    ]
 
-    topStrings = topStrings.filter(Boolean);
+    topStrings = topStrings.filter(Boolean)
 
-    var centerString = html`${localizedTemp}<span class="bolder-weather-card-temp-unit">${localizedUnit}</span>`;
+    const centerString = html`${localizedTemp}<span class="bolder-weather-card-temp-unit">${localizedUnit}</span>`
 
-    var stateString = html`${weatherString}`
-    var apparentHtml = html`${apparentString} ${localizedApparent} ${this.config.show_humidity || this.config.aqi_sensor ? html`` : html``}`
-    var aqiHtml = html`${this.config.aqi_use_color ? html`<aqi-text class="${aqiColorClass}">${aqi} ${aqiString}</aqi-text>` : html`${aqi} ${aqiString}`}${this.config.show_humidity ? html`&nbsp;•&nbsp;` : html``}`
-    var humidityHtml = html`${humidity}<ha-icon icon="mdi:water-percent" style="--mdc-icon-size: var(--bolder-weather-card-bottom-text-size_internal); margin-top: -2px;" />`
-    var bottomString = html`${this.config.aqi_sensor ? aqiHtml : html``}${this.config.show_humidity ? humidityHtml : html``}`
+    const stateString = html`${weatherString}`
+    const apparentHtml = html`${apparentString} ${localizedApparent} ${this.config.show_humidity || this.config.aqi_sensor ? html`` : html``}`
+
+    const aqiHtml = html`${this.config.aqi_use_color ? html`<aqi-text class="${aqiColorClass ?? ''}">${aqi} ${aqiString}</aqi-text>` : html`${aqi} ${aqiString}`}${this.config.show_humidity ? html`&nbsp;•&nbsp;` : html``}`
+    const humidityHtml = html`${humidity}<ha-icon icon="mdi:water-percent" style="--mdc-icon-size: var(--bolder-weather-card-bottom-text-size_internal); margin-top: -2px;" />`
+    const bottomString = html`${this.config.aqi_sensor ? aqiHtml : html``}${this.config.show_humidity ? humidityHtml : html``}`
 
     return html`
       <bolder-weather-card-today-left>
@@ -255,7 +257,7 @@ export class BolderWeatherCard extends LitElement {
       <bolder-weather-card-today-right>
         <bolder-weather-card-today-right-wrap>
           <bolder-weather-card-today-right-wrap-top>
-            ${topStrings.join(" • ")}
+            ${topStrings.join(' • ')}
           </bolder-weather-card-today-right-wrap-top>
           <bolder-weather-card-today-right-wrap-center>
             ${centerString}
