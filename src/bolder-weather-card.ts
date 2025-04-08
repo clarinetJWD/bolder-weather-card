@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup } from 'lit'
+import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup, css, unsafeCSS } from 'lit'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { customElement, property, state } from 'lit/decorators.js'
 import {
@@ -25,7 +25,7 @@ import {
   type WeatherForecast,
   type WeatherForecastEvent
 } from './types'
-import styles from './styles'
+import { GetCss } from './styles'
 import { actionHandler } from './action-handler-directive'
 import localize from './localize/localize'
 import { type HassEntity, type HassEntityBase } from 'home-assistant-js-websocket'
@@ -316,7 +316,7 @@ export class BolderWeatherCard extends LitElement {
         ${this.renderText(displayText)}
         ${this.renderIcon(weatherIcon)}
         ${this.renderText(this.toConfiguredTempWithUnit(tempUnit, minTempDay), 'right')}
-        ${this.renderForecastTemperatureBar(gradientRange, minTemp, maxTemp, minTempDay, maxTempDay, isNow, currentTemp)}
+        ${this.renderForecastTemperatureBar(gradientRange, minTemp, maxTemp, minTempDay, maxTempDay, isNow, forecast.isdefault, currentTemp)}
         ${this.renderText(this.toConfiguredTempWithUnit(tempUnit, maxTempDay))}
       </bolder-weather-card-forecast-row>
     `
@@ -338,20 +338,21 @@ export class BolderWeatherCard extends LitElement {
     `
   }
 
-  private renderForecastTemperatureBar (gradientRange: Rgb[], minTemp: number, maxTemp: number, minTempDay: number, maxTempDay: number, isNow: boolean, currentTemp: number | null): TemplateResult {
+  private renderForecastTemperatureBar (gradientRange: Rgb[], minTemp: number, maxTemp: number, minTempDay: number, maxTempDay: number, isNow: boolean, isDefault: boolean, currentTemp: number | null): TemplateResult {
     const { startPercent, endPercent } = this.calculateBarRangePercents(minTemp, maxTemp, minTempDay, maxTempDay)
     const moveRight = maxTemp === minTemp ? 0 : (minTempDay - minTemp) / (maxTemp - minTemp)
+    const rangeStyle = `--move-right: ${moveRight}; --start-percent: ${startPercent}%; --end-percent: ${endPercent}%; --gradient: ${this.gradient(
+            gradientRange,
+            startPercent,
+            endPercent
+          )};`
     return html`
       <forecast-temperature-bar>
         <forecast-temperature-bar-background> </forecast-temperature-bar-background>
         <forecast-temperature-bar-range
-          style="--move-right: ${moveRight}; --start-percent: ${startPercent}%; --end-percent: ${endPercent}%; --gradient: ${this.gradient(
-            gradientRange,
-            startPercent,
-            endPercent
-          )};"
+          style="${isDefault ? '' : rangeStyle}"
         >
-          ${isNow ? this.renderForecastCurrentTemp(minTempDay, maxTempDay, currentTemp) : ''}
+          ${isNow && !isDefault ? this.renderForecastCurrentTemp(minTempDay, maxTempDay, currentTemp) : ''}
         </forecast-temperature-bar-range>
       </forecast-temperature-bar>
     `
@@ -374,7 +375,7 @@ export class BolderWeatherCard extends LitElement {
 
   // https://lit.dev/docs/components/styles/
   static get styles (): CSSResultGroup {
-    return styles
+    return [css`${unsafeCSS(GetCss(false))}`]
   }
 
   private gradientRange (minTemp: number, maxTemp: number, temperatureUnit: TemperatureUnit): Rgb[] {
@@ -625,8 +626,35 @@ export class BolderWeatherCard extends LitElement {
     return localize(key, this.getLocale())
   }
 
+  private getDefaultForecasts (maxRowsCount: number, hourly: boolean): WeatherForecast[] {
+    const forecasts: WeatherForecast[] = []
+    for (let i = 0; i < maxRowsCount; i++) {
+      forecasts.push(this.getDefaultForecast(hourly, i))
+    }
+    return forecasts
+  }
+
+  private getDefaultForecast (hourly: boolean, index: number): WeatherForecast {
+    let thisDate = this.currentDate
+    if (hourly) {
+      thisDate = thisDate.plus({ hours: index })
+    } else {
+      thisDate = thisDate.plus({ days: index })
+    }
+    const returnForecast: WeatherForecast = {
+      datetime: thisDate.toString(),
+      condition: 'loading',
+      temperature: 0,
+      templow: 0,
+      precipitation: 0,
+      precipitation_probability: 0,
+      isdefault: true
+    }
+    return returnForecast
+  }
+
   private mergeForecasts (maxRowsCount: number, hourly: boolean): MergedWeatherForecast[] {
-    const forecasts = this.isLegacyWeather() ? this.getWeather().attributes.forecast ?? [] : this.forecasts ?? []
+    const forecasts = this.isLegacyWeather() ? this.getWeather().attributes.forecast ?? [] : this.forecasts ?? this.getDefaultForecasts(maxRowsCount, hourly)
     const agg = forecasts.reduce<Record<number, WeatherForecast[]>>((forecasts, forecast) => {
       const d = new Date(forecast.datetime)
       const unit = hourly ? `${d.getMonth()}-${d.getDate()}-${+d.getHours()}` : d.getDate()
@@ -674,13 +702,17 @@ export class BolderWeatherCard extends LitElement {
     const conditions = forecasts.map((f) => f.condition)
     const condition = extractMostOccuring(conditions)
 
+    const isDefaults = forecasts.map((f) => f.isdefault)
+    const isDefault = extractMostOccuring(isDefaults)
+
     return {
       temperature: maxTemp,
       templow: minTemp,
       datetime: this.parseDateTime(forecasts[0].datetime),
       condition,
       precipitation_probability: precipitationProbability,
-      precipitation
+      precipitation,
+      isdefault: isDefault
     }
   }
 

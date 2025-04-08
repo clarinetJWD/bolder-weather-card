@@ -93,6 +93,7 @@ export interface WeatherForecast {
   precipitation: number | null
   precipitation_probability: number | null
   templow: number | null
+  isdefault: boolean | false
 }
 
 export interface MergedWeatherForecast {
@@ -102,6 +103,7 @@ export interface MergedWeatherForecast {
   precipitation: number
   precipitation_probability: number
   templow: number
+  isdefault: boolean
 }
 
 export class Rgb {

@@ -68,7 +68,8 @@ class ActionHandler extends HTMLElement implements ActionHandler {
     }
     element.actionHandler = true
 
-    element.addEventListener('contextmenu', (ev: Event) => {
+    // eslint-disable-next-line spaced-comment
+    /*element.addEventListener('contextmenu', (ev: Event) => {
       const e = ev || window.event
       if (e.preventDefault) {
         e.preventDefault()
@@ -79,7 +80,7 @@ class ActionHandler extends HTMLElement implements ActionHandler {
       e.cancelBubble = true
       e.returnValue = false
       return false
-    })
+    }) */
 
     const start = (ev: Event): void => {
       this.held = false

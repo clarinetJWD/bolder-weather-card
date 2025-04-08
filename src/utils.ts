@@ -35,7 +35,7 @@ export function roundIfNotNull (number: number | null): number | null {
   return Math.round(number)
 }
 // from https://stackoverflow.com/a/1053865
-export function extractMostOccuring<T extends string | number | symbol> (elements: T[]): T {
+export function extractMostOccuring<T extends string | number | symbol | boolean> (elements: T[]): T {
   const modeMap = new Map<T, number>()
   let maxEl = elements[0]
   let maxCount = 1

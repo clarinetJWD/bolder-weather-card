@@ -47,6 +47,7 @@ import staticFillRaindrop from './icons/fill/svg-static/raindrop.svg'
 import staticCropRaindrop from './icons/fill/svg-static-crop/raindrop.svg'
 import staticFillHumidity from './icons/fill/svg-static/humidity.svg'
 import staticCropHumidity from './icons/fill/svg-static-crop/humidity.svg'
+import staticFillNotAvailable from './icons/fill/svg-static/not-available.svg'
 
 export const staticIcons = {
   fill: {
@@ -88,7 +89,8 @@ export const staticIcons = {
     windy: staticFillWindsock,
     'windy-exceptional': staticFillWindsock,
     exceptional: staticFillHurricane,
-    humidity: staticFillHumidity
+    humidity: staticFillHumidity,
+    loading: staticFillNotAvailable
   }
 }
 export const cropIcons = {
