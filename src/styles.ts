@@ -9,8 +9,13 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-background-day_internal: var(--bolder-weather-card-background-day, rgb(47, 152, 234));
       --bolder-weather-card-background-night_internal: var(--bolder-weather-card-background-night, rgb(15, 56, 118));
 
+      --bolder-weather-card-border-color_internal: var(--bolder-weather-card-border-color, var(--ha-card-border-color, var(--divider-color, #e0e0e0)));
+      --bolder-weather-card-border-color-day_internal: var(--bolder-weather-card-border-color-day, rgba(0,0,0,0.03));
+      --bolder-weather-card-border-color-night_internal: var(--bolder-weather-card-border-color-night, rgba(255,255,255,0.03));
+      --bolder-weather-card-border-style_internal: var(--bolder-weather-card-border-style, var(--ha-card-border-style, solid));
+      --bolder-weather-card-border-width_internal: var(--bolder-weather-card-border-width, var(--ha-card-border-width, 4px));
+
       --bolder-weather-card-border-radius_internal: var(--bolder-weather-card-border-radius, var(--ha-card-border-radius, 0px));
-      --bolder-weather-card-border-width_internal: var(--bolder-weather-card-border-width, var(--ha-card-border-width, 0px));
       --bolder-weather-card-box-shadow_internal: var(--bolder-weather-card-box-shadow, var(--ha-card-box-shadow));
       --bolder-weather-card-padding_internal: var(--bolder-weather-card-padding, 16px);
 
@@ -129,12 +134,6 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-forecast-space-inside_internal: var(--bolder-weather-card-forecast-space-inside, var(--bolder-weather-card-padding_internal));
       --bolder-weather-card-forecast-space-outside_internal: var(--bolder-weather-card-forecast-space-outside, 0px);
       --bolder-weather-card-forecast-border-radius_internal: var(--bolder-weather-card-forecast-border-radius, calc(var(--bolder-weather-card-border-radius_internal) / 2));
-
-      --bolder-weather-card-border-color_internal: var(--bolder-weather-card-border-color, var(--ha-card-border-color, var(--divider-color, #e0e0e0)));
-      --bolder-weather-card-border-color-day_internal: var(--bolder-weather-card-border-color-day, rgba(0,0,0,0.03));
-      --bolder-weather-card-border-color-night_internal: var(--bolder-weather-card-border-color-night, rgba(255,255,255,0.03));
-      --bolder-weather-card-border-style_internal: var(--bolder-weather-card-border-style, var(--ha-card-border-style, solid));
-      --bolder-weather-card-border-width_internal: var(--bolder-weather-card-border-width, var(--ha-card-border-width, 4px));
 
       /***     Layout */
       --bolder-weather-card-forecast-col-day-size_internal: var(--bolder-weather-card-forecast-col-day-size, 2.1rem);
