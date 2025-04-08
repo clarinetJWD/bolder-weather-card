@@ -1,5 +1,43 @@
 # Changelog
 
+## 1.0.0 (2025-04-07)
+
+
+### Features
+
+* Add ability to show a badge with the air quality index ([#396](https://github.com/clarinetJWD/bolder-weather-card/issues/396)) ([672bb59](https://github.com/clarinetJWD/bolder-weather-card/commit/672bb59858f00ca47a535e308e12ba4d40e6dc72))
+* use svg for static icons ([#366](https://github.com/clarinetJWD/bolder-weather-card/issues/366)) ([7699642](https://github.com/clarinetJWD/bolder-weather-card/commit/76996428b09800e6f60a6b7b3f48559e806ae3fb))
+
+
+### Bug Fixes
+
+* Add additional translations for Hungarian ([#544](https://github.com/clarinetJWD/bolder-weather-card/issues/544)) ([a942e57](https://github.com/clarinetJWD/bolder-weather-card/commit/a942e57d503550f9c80508819baebb4ed403e384))
+* Add Arabic support based on [#517](https://github.com/clarinetJWD/bolder-weather-card/issues/517) ([#518](https://github.com/clarinetJWD/bolder-weather-card/issues/518)) ([da03c6e](https://github.com/clarinetJWD/bolder-weather-card/commit/da03c6ebba9a600c28d943285545ed21dbbaa12b))
+* Add Croatian language ([#543](https://github.com/clarinetJWD/bolder-weather-card/issues/543)) ([7b9fcd0](https://github.com/clarinetJWD/bolder-weather-card/commit/7b9fcd096a1c9e6573c2943b404b93268d6ebed7))
+* Add feels-like translation for Slovenian ([#525](https://github.com/clarinetJWD/bolder-weather-card/issues/525)) ([7a3da16](https://github.com/clarinetJWD/bolder-weather-card/commit/7a3da16dccc22836585fc935039c842d64bc54c6))
+* Add Korean translations for "AQI" and "feel like" ([#417](https://github.com/clarinetJWD/bolder-weather-card/issues/417)) ([50fd243](https://github.com/clarinetJWD/bolder-weather-card/commit/50fd24387bde29499a406612b3d0bb9f1bbe6c12))
+* Add Luxembourgish language ([#453](https://github.com/clarinetJWD/bolder-weather-card/issues/453)) ([ec776b9](https://github.com/clarinetJWD/bolder-weather-card/commit/ec776b97bda116ef5f390d93cacafcd4f0f10e89))
+* Add more "feels like" translations ([#497](https://github.com/clarinetJWD/bolder-weather-card/issues/497)) ([67205d4](https://github.com/clarinetJWD/bolder-weather-card/commit/67205d41a7f7acfbcf336161715efdbe44c9699c))
+* Added Welsh Language (Cymraeg) Localisation ([#512](https://github.com/clarinetJWD/bolder-weather-card/issues/512)) ([292ed42](https://github.com/clarinetJWD/bolder-weather-card/commit/292ed4283a419470f10fe8891e26d7cd98352f0b))
+* **deps:** update dependency home-assistant-js-websocket to v9 ([1858502](https://github.com/clarinetJWD/bolder-weather-card/commit/1858502e0a2538f980bfde84491dd873f22ce2e5))
+* **deps:** update dependency home-assistant-js-websocket to v9.2.0 ([#349](https://github.com/clarinetJWD/bolder-weather-card/issues/349)) ([7daf6a2](https://github.com/clarinetJWD/bolder-weather-card/commit/7daf6a297c5dfb37f533709d1ed25628d96aeee3))
+* **deps:** update minor-dependencies ([e30f839](https://github.com/clarinetJWD/bolder-weather-card/commit/e30f839c4e1fc3fe88063036a77797694c047bf0))
+* **deps:** update minor-dependencies ([0604802](https://github.com/clarinetJWD/bolder-weather-card/commit/0604802217014fb6ddd261fb58844b0c2c33ee21))
+* **deps:** update minor-dependencies ([#431](https://github.com/clarinetJWD/bolder-weather-card/issues/431)) ([db7eb72](https://github.com/clarinetJWD/bolder-weather-card/commit/db7eb72c21902be234ed4149788465a7e48c1ee5))
+* **deps:** update minor-dependencies ([#545](https://github.com/clarinetJWD/bolder-weather-card/issues/545)) ([b6623ef](https://github.com/clarinetJWD/bolder-weather-card/commit/b6623efa5f10af90bb704dedd44ac7239354d5f2))
+* extractMostOcurring was always returning the first element ([917c2dc](https://github.com/clarinetJWD/bolder-weather-card/commit/917c2dc4d0c1c6ca1af9eb5898fab8551a6d7717))
+* Fix custom element define error ([#472](https://github.com/clarinetJWD/bolder-weather-card/issues/472)) ([722fb76](https://github.com/clarinetJWD/bolder-weather-card/commit/722fb763b56282f7b3dbfb5ab55c332c404a3390))
+* Localize "feels like" for Estonian ([#500](https://github.com/clarinetJWD/bolder-weather-card/issues/500)) ([47ee2e1](https://github.com/clarinetJWD/bolder-weather-card/commit/47ee2e15218dca9531cabb64914791c2189f71c2))
+* Translate "Feels like" into Russian ([#464](https://github.com/clarinetJWD/bolder-weather-card/issues/464)) ([b85379f](https://github.com/clarinetJWD/bolder-weather-card/commit/b85379fdf5a341a4ad802ee36061b086ce385607))
+* Translate feels-like in french ([#444](https://github.com/clarinetJWD/bolder-weather-card/issues/444)) ([3af024f](https://github.com/clarinetJWD/bolder-weather-card/commit/3af024f6bfb5fefa6a053066f81278e5c83b1d25))
+* Update "Feels like" for ca, es, and pt ([#450](https://github.com/clarinetJWD/bolder-weather-card/issues/450)) ([6cb9f66](https://github.com/clarinetJWD/bolder-weather-card/commit/6cb9f66938c172ff767180eb603e26f35a86dbf1))
+* Update "feels-like" translation in it.json ([#414](https://github.com/clarinetJWD/bolder-weather-card/issues/414)) ([1c20972](https://github.com/clarinetJWD/bolder-weather-card/commit/1c209725ba187d5ba2aedc0ffb3ac9b5e0c7f920))
+* update Hebrew localize text "feels like" ([#495](https://github.com/clarinetJWD/bolder-weather-card/issues/495)) ([4dc64f1](https://github.com/clarinetJWD/bolder-weather-card/commit/4dc64f1c1ea30d0b484df8507aa78a74634b795d))
+* Update indonesian translations ([#421](https://github.com/clarinetJWD/bolder-weather-card/issues/421)) ([65865a0](https://github.com/clarinetJWD/bolder-weather-card/commit/65865a03576517f7f615f0e61639b3eb9c216d38))
+* Update Luxembourgish translations ([#473](https://github.com/clarinetJWD/bolder-weather-card/issues/473)) ([ec584de](https://github.com/clarinetJWD/bolder-weather-card/commit/ec584decf5a78300e1652036d494513f2279c49c))
+* Update Taiwanese translations ([#425](https://github.com/clarinetJWD/bolder-weather-card/issues/425)) ([fd636b4](https://github.com/clarinetJWD/bolder-weather-card/commit/fd636b4afd4ecc3d92af1f7e6a494f41ba5e5d8c))
+* Update to Czech translation for exceptional weather state ([#505](https://github.com/clarinetJWD/bolder-weather-card/issues/505)) ([c3641fa](https://github.com/clarinetJWD/bolder-weather-card/commit/c3641fa30f765e231117dc67f9f1db505de0ad0e))
+
 ## [2.8.11](https://github.com/pkissling/clock-weather-card/compare/v2.8.10...v2.8.11) (2025-04-02)
 
 
