@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.0.0...v1.1.0) (2025-04-08)
+
+
+### Features
+
+* Adds Loading UI to the Forecasts section to avoid pop-in ([05848d3](https://github.com/clarinetJWD/bolder-weather-card/commit/05848d3284c95b83e967db0f7a049832769d7918))
+
 ## 1.0.0 (2025-04-07)
 
 
