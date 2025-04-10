@@ -225,6 +225,8 @@ export class BolderWeatherCard extends LitElement {
     const apparentTemp = this.config.show_decimal ? this.getApparentTemperature() : roundIfNotNull(this.getApparentTemperature())
     const aqi = this.getAqi()
     const aqiColorClass = this.getAqiColor(aqi)
+    const uv = this.getUv()
+    const uvColorClass = this.getUvColor(uv)
     const humidity = roundIfNotNull(this.getCurrentHumidity())
     const icon = this.toIcon(state, 'crop', false)
     const weatherString = this.localize(`weather.${state}`)
@@ -233,6 +235,7 @@ export class BolderWeatherCard extends LitElement {
     const localizedApparent = apparentTemp !== null ? this.toConfiguredTempWithUnit(tempUnit, apparentTemp) : null
     const apparentString = this.localize('misc.feels-like')
     const aqiString = this.localize('misc.aqi')
+    const uvString = this.localize('misc.uv')
     const daytime = this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
     let topStrings = [
       this.config.hide_date ? undefined : this.date(),
@@ -246,9 +249,10 @@ export class BolderWeatherCard extends LitElement {
     const stateString = html`${weatherString}`
     const apparentHtml = html`${apparentString} ${localizedApparent} ${this.config.show_humidity || this.config.aqi_sensor ? html`` : html``}`
 
-    const aqiHtml = html`${this.config.aqi_use_color ? html`<aqi-text class="${aqiColorClass ?? ''}">${aqi} ${aqiString}</aqi-text>` : html`${aqi} ${aqiString}`}${this.config.show_humidity ? html`&nbsp;•&nbsp;` : html``}`
+    const aqiHtml = html`${this.config.aqi_use_color ? html`<aqi-text class="${aqiColorClass ?? ''}">${aqi} ${aqiString}</aqi-text>` : html`${aqi} ${aqiString}`}${this.config.show_humidity || this.config.uv_sensor ? html`&nbsp;•&nbsp;` : html``}`
+    const uvHtml = html`${this.config.uv_use_color ? html`<uv-text class="${uvColorClass ?? ''}">${uvString} ${uv}</uv-text>` : html`${uvString} ${uv}`}${this.config.show_humidity ? html`&nbsp;•&nbsp;` : html``}`
     const humidityHtml = html`${humidity}<ha-icon icon="mdi:water-percent" style="--mdc-icon-size: var(--bolder-weather-card-bottom-text-size_internal); margin-top: -2px;" />`
-    const bottomString = html`${this.config.aqi_sensor ? aqiHtml : html``}${this.config.show_humidity ? humidityHtml : html``}`
+    const bottomString = html`${this.config.aqi_sensor ? aqiHtml : html``}${this.config.uv_sensor ? uvHtml : html``}${this.config.show_humidity ? humidityHtml : html``}`
 
     return html`
       <bolder-weather-card-today-left>
@@ -466,6 +470,8 @@ export class BolderWeatherCard extends LitElement {
       apparent_sensor: config.apparent_sensor ?? undefined,
       aqi_sensor: config.aqi_sensor ?? undefined,
       aqi_use_color: config.aqi_use_color ?? true,
+      uv_sensor: config.uv_sensor ?? undefined,
+      uv_use_color: config.uv_use_color ?? true,
       use_day_night_colors: config.use_day_night_colors ?? true
     }
   }
@@ -545,6 +551,28 @@ export class BolderWeatherCard extends LitElement {
     if (aqi <= 200) return 'aqi-red'
     if (aqi <= 300) return 'aqi-purple'
     return 'aqi-maroon'
+  }
+
+  private getUv (): number | null {
+    if (this.config.uv_sensor) {
+      const uvSensor = this.hass.states[this.config.uv_sensor] as HassEntity | undefined
+      const uv = uvSensor?.state ? parseInt(uvSensor.state) : undefined
+      if (uv !== undefined && !isNaN(uv)) {
+        return uv
+      }
+    }
+    return null
+  }
+
+  private getUvColor (uv: number | null): string | null {
+    if (uv == null) {
+      return null
+    }
+    if (uv <= 2) return 'uv-green'
+    if (uv <= 5) return 'uv-yellowgreen'
+    if (uv <= 7) return 'uv-orange'
+    if (uv <= 10) return 'uv-red'
+    return 'uv-maroon'
   }
 
   private getSun (): HassEntityBase | undefined {

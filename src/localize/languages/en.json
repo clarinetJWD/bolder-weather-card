@@ -27,6 +27,7 @@
   },
   "misc": {
     "aqi": "AQI",
+    "uv": "UV",
     "humidity": "Humidity",
     "feels-like": "Feels like"
   },
@@ -53,6 +54,8 @@
     "show_decimal": "Show Decimal",
     "aqi_sensor": "AQI Sensor",
     "aqi_use_color": "Use Color for AQI",
+    "uv_sensor": "UV Index Sensor",
+    "uv_use_color": "Use Color for UV Index",
     "use_day_night_colors": "Use Day/Night Colors"
   }
 }

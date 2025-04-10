@@ -36,6 +36,8 @@ export interface BolderWeatherCardConfig extends LovelaceCardConfig {
   apparent_sensor?: string
   aqi_sensor?: string
   aqi_use_color?: boolean
+  uv_sensor?: string
+  uv_use_color?: boolean
   use_day_night_colors?: boolean
 }
 
@@ -62,6 +64,8 @@ export interface MergedBolderWeatherCardConfig extends LovelaceCardConfig {
   apparent_sensor?: string
   aqi_sensor?: string
   aqi_use_color: boolean
+  uv_sensor?: string
+  uv_use_color: boolean
   use_day_night_colors: boolean
 }
 

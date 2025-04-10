@@ -90,25 +90,25 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-state-text-space-above_internal: var(--bolder-weather-card-state-text-space-above, 0px);
       --bolder-weather-card-state-text-space-below_internal: var(--bolder-weather-card-state-text-space-below, 10px);
 
-      /***     AQI Text */
-      --bolder-weather-card-aqi-green-text-color_internal: var(--bolder-weather-card-aqi-green-text-color, green);
-      --bolder-weather-card-aqi-green-text-color-day_internal: var(--bolder-weather-card-aqi-green-text-color-day, var(--bolder-weather-card-aqi-green-text-color_internal));
-      --bolder-weather-card-aqi-green-text-color-night_internal: var(--bolder-weather-card-aqi-green-text-color-night, var(--bolder-weather-card-aqi-green-text-color_internal));
-      --bolder-weather-card-aqi-yellowgreen-text-color_internal: var(--bolder-weather-card-aqi-yellowgreen-text-color, yellowgreen);
-      --bolder-weather-card-aqi-yellowgreen-text-color-day_internal: var(--bolder-weather-card-aqi-yellowgreen-text-color-day, var(--bolder-weather-card-aqi-yellowgreen-text-color_internal));
-      --bolder-weather-card-aqi-yellowgreen-text-color-night_internal: var(--bolder-weather-card-aqi-yellowgreen-text-color-night, var(--bolder-weather-card-aqi-yellowgreen-text-color_internal));
-      --bolder-weather-card-aqi-orange-text-color_internal: var(--bolder-weather-card-aqi-orange-text-color, orange);
-      --bolder-weather-card-aqi-orange-text-color-day_internal: var(--bolder-weather-card-aqi-orange-text-color-day, var(--bolder-weather-card-aqi-orange-text-color_internal));
-      --bolder-weather-card-aqi-orange-text-color-night_internal: var(--bolder-weather-card-aqi-orange-text-color-night, var(--bolder-weather-card-aqi-orange-text-color_internal));
-      --bolder-weather-card-aqi-red-text-color_internal: var(--bolder-weather-card-aqi-red-text-color, red);
-      --bolder-weather-card-aqi-red-text-color-day_internal: var(--bolder-weather-card-aqi-red-text-color-day, var(--bolder-weather-card-aqi-red-text-color_internal));
-      --bolder-weather-card-aqi-red-text-color-night_internal: var(--bolder-weather-card-aqi-red-text-color-night, var(--bolder-weather-card-aqi-red-text-color_internal));
-      --bolder-weather-card-aqi-purple-text-color_internal: var(--bolder-weather-card-aqi-purple-text-color, purple);
-      --bolder-weather-card-aqi-purple-text-color-day_internal: var(--bolder-weather-card-aqi-purple-text-color-day, var(--bolder-weather-card-aqi-purple-text-color_internal));
-      --bolder-weather-card-aqi-purple-text-color-night_internal: var(--bolder-weather-card-aqi-purple-text-color-night, var(--bolder-weather-card-aqi-purple-text-color_internal));
-      --bolder-weather-card-aqi-maroon-text-color_internal: var(--bolder-weather-card-aqi-maroon-text-color, maroon);
-      --bolder-weather-card-aqi-maroon-text-color-day_internal: var(--bolder-weather-card-aqi-maroon-text-color-day, var(--bolder-weather-card-aqi-maroon-text-color_internal));
-      --bolder-weather-card-aqi-maroon-text-color-night_internal: var(--bolder-weather-card-aqi-maroon-text-color-night, var(--bolder-weather-card-aqi-maroon-text-color_internal));
+      /***     Colored Text */
+      --bolder-weather-card-green-text-color_internal: var(--bolder-weather-card-green-text-color, green);
+      --bolder-weather-card-green-text-color-day_internal: var(--bolder-weather-card-green-text-color-day, var(--bolder-weather-card-green-text-color_internal));
+      --bolder-weather-card-green-text-color-night_internal: var(--bolder-weather-card-green-text-color-night, var(--bolder-weather-card-green-text-color_internal));
+      --bolder-weather-card-yellowgreen-text-color_internal: var(--bolder-weather-card-yellowgreen-text-color, yellowgreen);
+      --bolder-weather-card-yellowgreen-text-color-day_internal: var(--bolder-weather-card-yellowgreen-text-color-day, var(--bolder-weather-card-yellowgreen-text-color_internal));
+      --bolder-weather-card-yellowgreen-text-color-night_internal: var(--bolder-weather-card-yellowgreen-text-color-night, var(--bolder-weather-card-yellowgreen-text-color_internal));
+      --bolder-weather-card-orange-text-color_internal: var(--bolder-weather-card-orange-text-color, orange);
+      --bolder-weather-card-orange-text-color-day_internal: var(--bolder-weather-card-orange-text-color-day, var(--bolder-weather-card-orange-text-color_internal));
+      --bolder-weather-card-orange-text-color-night_internal: var(--bolder-weather-card-orange-text-color-night, var(--bolder-weather-card-orange-text-color_internal));
+      --bolder-weather-card-red-text-color_internal: var(--bolder-weather-card-red-text-color, red);
+      --bolder-weather-card-red-text-color-day_internal: var(--bolder-weather-card-red-text-color-day, var(--bolder-weather-card-red-text-color_internal));
+      --bolder-weather-card-red-text-color-night_internal: var(--bolder-weather-card-red-text-color-night, var(--bolder-weather-card-red-text-color_internal));
+      --bolder-weather-card-purple-text-color_internal: var(--bolder-weather-card-purple-text-color, purple);
+      --bolder-weather-card-purple-text-color-day_internal: var(--bolder-weather-card-purple-text-color-day, var(--bolder-weather-card-purple-text-color_internal));
+      --bolder-weather-card-purple-text-color-night_internal: var(--bolder-weather-card-purple-text-color-night, var(--bolder-weather-card-purple-text-color_internal));
+      --bolder-weather-card-maroon-text-color_internal: var(--bolder-weather-card-maroon-text-color, maroon);
+      --bolder-weather-card-maroon-text-color-day_internal: var(--bolder-weather-card-maroon-text-color-day, var(--bolder-weather-card-maroon-text-color_internal));
+      --bolder-weather-card-maroon-text-color-night_internal: var(--bolder-weather-card-maroon-text-color-night, var(--bolder-weather-card-maroon-text-color_internal));
 
 
 
@@ -190,12 +190,12 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-forecast-text-color_internal: var(--bolder-weather-card-forecast-text-color-day_internal);
       --bolder-weather-card-forecast-text-outline-color_internal: var(--bolder-weather-card-forecast-text-outline-color-day_internal);
 
-      --bolder-weather-card-aqi-green-text-color_internal: var(--bolder-weather-card-aqi-green-text-color-day_internal);
-      --bolder-weather-card-aqi-yellowgreen-text-color_internal: var(--bolder-weather-card-aqi-yellowgreen-text-color-day_internal);
-      --bolder-weather-card-aqi-orange-text-color_internal: var(--bolder-weather-card-aqi-orange-text-color-day_internal);
-      --bolder-weather-card-aqi-red-text-color_internal: var(--bolder-weather-card-aqi-red-text-color-day_internal);
-      --bolder-weather-card-aqi-purple-text-color_internal: var(--bolder-weather-card-aqi-purple-text-color-day_internal);
-      --bolder-weather-card-aqi-maroon-text-color_internal: var(--bolder-weather-card-aqi-maroon-text-color-day_internal);
+      --bolder-weather-card-green-text-color_internal: var(--bolder-weather-card-green-text-color-day_internal);
+      --bolder-weather-card-yellowgreen-text-color_internal: var(--bolder-weather-card-yellowgreen-text-color-day_internal);
+      --bolder-weather-card-orange-text-color_internal: var(--bolder-weather-card-orange-text-color-day_internal);
+      --bolder-weather-card-red-text-color_internal: var(--bolder-weather-card-red-text-color-day_internal);
+      --bolder-weather-card-purple-text-color_internal: var(--bolder-weather-card-purple-text-color-day_internal);
+      --bolder-weather-card-maroon-text-color_internal: var(--bolder-weather-card-maroon-text-color-day_internal);
 
       --bolder-weather-card-title-text-color_internal: var(--bolder-weather-card-title-text-color-day_internal);
       --bolder-weather-card-title-text-outline-color_internal: var(--bolder-weather-card-title-text-outline-color-day_internal);
@@ -230,12 +230,12 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-forecast-text-color_internal: var(--bolder-weather-card-forecast-text-color-night_internal);
       --bolder-weather-card-forecast-text-outline-color_internal: var(--bolder-weather-card-forecast-text-outline-color-night_internal);
 
-      --bolder-weather-card-aqi-green-text-color_internal: var(--bolder-weather-card-aqi-green-text-color-night_internal);
-      --bolder-weather-card-aqi-yellowgreen-text-color_internal: var(--bolder-weather-card-aqi-yellowgreen-text-color-night_internal);
-      --bolder-weather-card-aqi-orange-text-color_internal: var(--bolder-weather-card-aqi-orange-text-color-night_internal);
-      --bolder-weather-card-aqi-red-text-color_internal: var(--bolder-weather-card-aqi-red-text-color-night_internal);
-      --bolder-weather-card-aqi-purple-text-color_internal: var(--bolder-weather-card-aqi-purple-text-color-night_internal);
-      --bolder-weather-card-aqi-maroon-text-color_internal: var(--bolder-weather-card-aqi-maroon-text-color-night_internal);
+      --bolder-weather-card-green-text-color_internal: var(--bolder-weather-card-green-text-color-night_internal);
+      --bolder-weather-card-yellowgreen-text-color_internal: var(--bolder-weather-card-yellowgreen-text-color-night_internal);
+      --bolder-weather-card-orange-text-color_internal: var(--bolder-weather-card-orange-text-color-night_internal);
+      --bolder-weather-card-red-text-color_internal: var(--bolder-weather-card-red-text-color-night_internal);
+      --bolder-weather-card-purple-text-color_internal: var(--bolder-weather-card-purple-text-color-night_internal);
+      --bolder-weather-card-maroon-text-color_internal: var(--bolder-weather-card-maroon-text-color-night_internal);
 
       --bolder-weather-card-title-text-color_internal: var(--bolder-weather-card-title-text-color-night_internal);
       --bolder-weather-card-title-text-outline-color_internal: var(--bolder-weather-card-title-text-outline-color-night_internal);
@@ -451,22 +451,41 @@ ${myVar ? ':host{}' : ':host{}'}
       border-radius: 5px;
     }
     .aqi-green {
-      color: var(--bolder-weather-card-aqi-green-text-color_internal);
+      color: var(--bolder-weather-card-aqi-green-text-color, var(--bolder-weather-card-green-text-color_internal));
     }
     .aqi-yellowgreen {
-      color: var(--bolder-weather-card-aqi-yellowgreen-text-color_internal);
+      color: var(--bolder-weather-card-aqi-yellowgreen-text-color, var(--bolder-weather-card-yellowgreen-text-color_internal));
     }
     .aqi-orange {
-      color: var(--bolder-weather-card-aqi-orange-text-color_internal);
+      color: var(--bolder-weather-card-aqi-orange-text-color, var(--bolder-weather-card-orange-text-color_internal));
     }
     .aqi-red {
-      color: var(--bolder-weather-card-aqi-red-text-color_internal);
+      color: var(--bolder-weather-card-aqi-red-text-color, var(--bolder-weather-card-red-text-color_internal));
     }
     .aqi-purple {
-      color: var(--bolder-weather-card-aqi-purple-text-color_internal);
+      color: var(--bolder-weather-card-aqi-purple-text-color, var(--bolder-weather-card-purple-text-color_internal));
     }
     .aqi-maroon {
-      color: var(--bolder-weather-card-aqi-maroon-text-color_internal);
+      color: var(--bolder-weather-card-aqi-maroon-text-color, var(--bolder-weather-card-maroon-text-color_internal));
+    }
+    uv {
+      padding: 2px;
+      border-radius: 5px;
+    }
+    .uv-green {
+      color: var(--bolder-weather-card-uv-green-text-color, var(--bolder-weather-card-green-text-color_internal));
+    }
+    .uv-yellowgreen {
+      color: var(--bolder-weather-card-uv-yellowgreen-text-color, var(--bolder-weather-card-yellowgreen-text-color_internal));
+    }
+    .uv-orange {
+      color: var(--bolder-weather-card-uv-orange-text-color, var(--bolder-weather-card-orange-text-color_internal));
+    }
+    .uv-red {
+      color: var(--bolder-weather-card-uv-red-text-color, var(--bolder-weather-card-red-text-color_internal));
+    }
+    .uv-violet {
+      color: var(--bolder-weather-card-uv-maroon-text-color, var(--bolder-weather-card-maroon-text-color_internal));
     }
   `
 }

@@ -70,6 +70,7 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
         { name: 'humidity_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
         { name: 'apparent_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
         { name: 'aqi_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
+        { name: 'uv_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
         { name: 'forecast_rows', locale: this.getLocale(), selector: { text: { type: 'number' } } },
         { name: 'locale', locale: this.getLocale(), selector: { text: {} } },
         {
@@ -96,7 +97,8 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
         { name: 'hide_date', locale: this.getLocale(), selector: { boolean: {} } },
         { name: 'use_browser_time', locale: this.getLocale(), selector: { boolean: {} } },
         { name: 'show_decimal', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'aqi_use_color', locale: this.getLocale(), selector: { boolean: {} } }
+        { name: 'aqi_use_color', locale: this.getLocale(), selector: { boolean: {} } },
+        { name: 'uv_use_color', locale: this.getLocale(), selector: { boolean: {} } }
       ]}
       .computeLabel=${(schema) => this.computeLabel(schema)}
       @value-changed=${(event) => { this.valueChanged(event) }}
@@ -113,6 +115,8 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
     _config.apparent_sensor = event.detail.value.apparent_sensor
     _config.aqi_sensor = event.detail.value.aqi_sensor
     _config.aqi_use_color = event.detail.value.aqi_use_color
+    _config.uv_sensor = event.detail.value.uv_sensor
+    _config.uv_use_color = event.detail.value.uv_use_color
     _config.date_pattern = event.detail.value.date_pattern
     _config.forecast_rows = event.detail.value.forecast_rows
     _config.hide_clock = event.detail.value.hide_clock
