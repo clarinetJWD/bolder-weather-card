@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.2.0...v1.2.1) (2025-04-10)
+
+
+### Bug Fixes
+
+* Added translation stubs for all languages ([70dca4c](https://github.com/clarinetJWD/bolder-weather-card/commit/70dca4c5d983791bf24181069b25d62ca834a105))
+
 ## [1.2.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.1.0...v1.2.0) (2025-04-10)
 
 
