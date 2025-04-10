@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.1.0...v1.2.0) (2025-04-10)
+
+
+### Features
+
+* Adds UV Index and configuration ([7dd6084](https://github.com/clarinetJWD/bolder-weather-card/commit/7dd6084531e4fa48fb49dcfaff6d849ee95b71fc))
+
 ## [1.1.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.0.0...v1.1.0) (2025-04-08)
 
 
