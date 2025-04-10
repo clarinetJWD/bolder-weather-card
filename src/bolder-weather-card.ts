@@ -572,7 +572,7 @@ export class BolderWeatherCard extends LitElement {
     if (uv <= 5) return 'uv-yellowgreen'
     if (uv <= 7) return 'uv-orange'
     if (uv <= 10) return 'uv-red'
-    return 'uv-maroon'
+    return 'uv-violet'
   }
 
   private getSun (): HassEntityBase | undefined {

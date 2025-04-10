@@ -27,7 +27,35 @@
   },
   "misc": {
     "aqi": "AQI",
+    "uv": "UV",
     "humidity": "fugtighed",
     "feels-like": "Føles som"
+  },
+  "editor": {
+    "entity": "Weather Entity",
+    "apparent_sensor": "Apparent Temperature Sensor",
+    "title": "Title",
+    "sun_entity": "Sun",
+    "temperature_sensor": "Temperature Sensor",
+    "humidity_sensor": "Humidity Sensor",
+    "forecast_rows": "Forecast Rows",
+    "locale": "Locale",
+    "time_format": "Time Format [12 or 24]",
+    "time_pattern": "Time Pattern",
+    "date_pattern": "Date Pattern",
+    "hide_today_section": "Hide Today",
+    "hide_forecast_section": "Hide Forecast",
+    "show_humidity": "Show Humidity",
+    "hourly_forecast": "Hourly Forecast",
+    "hide_clock": "Hide Clock",
+    "hide_date": "Hide Date",
+    "use_browser_time": "Use Browser Time",
+    "time_zone": "Time Zone",
+    "show_decimal": "Show Decimal",
+    "aqi_sensor": "AQI Sensor",
+    "aqi_use_color": "Use Color for AQI",
+    "uv_sensor": "UV Index Sensor",
+    "uv_use_color": "Use Color for UV Index",
+    "use_day_night_colors": "Use Day/Night Colors"
   }
 }
