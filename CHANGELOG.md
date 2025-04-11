@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.2.1...v1.2.2) (2025-04-11)
+
+
+### Bug Fixes
+
+* Fixed Forecast Row icon rendering for Apple Devices running Safari. ([e1e70fe](https://github.com/clarinetJWD/bolder-weather-card/commit/e1e70fed58922fa3c12785a9b07ea35942d4c0ec))
+
 ## [1.2.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.2.0...v1.2.1) (2025-04-10)
 
 
