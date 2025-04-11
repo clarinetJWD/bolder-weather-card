@@ -8,11 +8,16 @@ import image from '@rollup/plugin-image'
 
 export default {
   input: ['src/bolder-weather-card.ts'],
-  output: {
+  output: [{
     dir: './dist',
     format: 'es',
     inlineDynamicImports: true
   },
+  {
+    dir: '\\\\10.10.82.78\\config\\www\\community\\bolder-weather-card-dev',
+    format: 'es',
+    inlineDynamicImports: true
+  }],
   plugins: [
     image(),
     nodeResolve(),
