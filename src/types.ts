@@ -39,6 +39,7 @@ export interface BolderWeatherCardConfig extends LovelaceCardConfig {
   uv_sensor?: string
   uv_use_color?: boolean
   use_day_night_colors?: boolean
+  use_time_as_primary?: boolean
 }
 
 export interface MergedBolderWeatherCardConfig extends LovelaceCardConfig {
@@ -67,6 +68,7 @@ export interface MergedBolderWeatherCardConfig extends LovelaceCardConfig {
   uv_sensor?: string
   uv_use_color: boolean
   use_day_night_colors: boolean
+  use_time_as_primary: boolean
 }
 
 export const enum WeatherEntityFeature {

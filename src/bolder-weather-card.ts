@@ -239,12 +239,13 @@ export class BolderWeatherCard extends LitElement {
     const daytime = this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
     let topStrings = [
       this.config.hide_date ? undefined : this.date(),
-      this.config.hide_clock ? undefined : this.time()
+      this.config.hide_clock || this.config.use_time_as_primary ? undefined : this.time(),
+      this.config.use_time_as_primary ? `${localizedTemp} ${localizedUnit}` : undefined
     ]
 
     topStrings = topStrings.filter(Boolean)
 
-    const centerString = html`${localizedTemp}<span class="bolder-weather-card-temp-unit">${localizedUnit}</span>`
+    const centerString = this.config.use_time_as_primary ? html`${this.time()}` : html`${localizedTemp}<span class="bolder-weather-card-temp-unit">${localizedUnit}</span>`
 
     const stateString = html`${weatherString}`
     const apparentHtml = html`${apparentString} ${localizedApparent} ${this.config.show_humidity || this.config.aqi_sensor ? html`` : html``}`
@@ -472,7 +473,8 @@ export class BolderWeatherCard extends LitElement {
       aqi_use_color: config.aqi_use_color ?? true,
       uv_sensor: config.uv_sensor ?? undefined,
       uv_use_color: config.uv_use_color ?? true,
-      use_day_night_colors: config.use_day_night_colors ?? true
+      use_day_night_colors: config.use_day_night_colors ?? true,
+      use_time_as_primary: config.use_time_as_primary ?? false
     }
   }
 

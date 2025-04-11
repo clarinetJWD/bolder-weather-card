@@ -94,6 +94,7 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
         { name: 'show_humidity', locale: this.getLocale(), selector: { boolean: {} } },
         { name: 'hourly_forecast', locale: this.getLocale(), selector: { boolean: {} } },
         { name: 'hide_clock', locale: this.getLocale(), selector: { boolean: {} } },
+        { name: 'use_time_as_primary', locale: this.getLocale(), selector: { boolean: {} } },
         { name: 'hide_date', locale: this.getLocale(), selector: { boolean: {} } },
         { name: 'use_browser_time', locale: this.getLocale(), selector: { boolean: {} } },
         { name: 'show_decimal', locale: this.getLocale(), selector: { boolean: {} } },
@@ -120,6 +121,7 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
     _config.date_pattern = event.detail.value.date_pattern
     _config.forecast_rows = event.detail.value.forecast_rows
     _config.hide_clock = event.detail.value.hide_clock
+    _config.use_time_as_primary = event.detail.value.use_time_as_primary
     _config.hide_date = event.detail.value.hide_date
     _config.hide_forecast_section = event.detail.value.hide_forecast_section
     _config.hide_today_section = event.detail.value.hide_today_section

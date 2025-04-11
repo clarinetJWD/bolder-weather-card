@@ -57,6 +57,7 @@
     "aqi_use_color": "Use Color for AQI",
     "uv_sensor": "UV Index Sensor",
     "uv_use_color": "Use Color for UV Index",
-    "use_day_night_colors": "Use Day/Night Colors"
+    "use_day_night_colors": "Use Day/Night Colors",
+    "use_time_as_primary": "Use Time as the Primary Element"
   }
 }
