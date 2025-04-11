@@ -107,6 +107,8 @@ show_decimal: false
 apparent_sensor: sensor.real_feel_temperature
 aqi_sensor: sensor.air_quality_index
 aqi_use_color: false
+uv_sensor: sensor.uv_index
+uv_use_color: false
 use_day_night_colors: true
 ```
 
@@ -137,6 +139,8 @@ use_day_night_colors: true
 | apparent_sensor       | string           | **Optional** | ID of the apparent temperature sensor entity. It is used to show the apparent temperature based on a sensor and will only show it if value is provided.                                                                           | `''`      |
 | aqi_sensor            | string           | **Optional** | ID of the Air Quality Index sensor entity. It is used to show the AQI based on a sensor and will only show it if value is provided.                                                                                               | `''`      |
 | aqi_use_color         | boolean          | **Optional** | When true, the AQI text is colored. When false, it uses the normal bottom text color.                                                                                                                                             | `true`    |
+| uv_sensor             | string           | **Optional** | ID of the UV Index sensor entity. It is used to show the UV based on a sensor and will only show it if value is provided.                                                                                                         | `''`      |
+| uv_use_color          | boolean          | **Optional** | When true, the UV text is colored. When false, it uses the normal bottom text color.                                                                                                                                              | `true`    |
 | use_day_night_colors  | boolean          | **Optional** | When ture, the card uses day night colors (blue, dark blue) and text colors to match. When false, uses your theme's normal colors.                                                                                                | `true`    |
 
 ## Theme Variables
