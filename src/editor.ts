@@ -141,6 +141,7 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
     _config.use_browser_time = event.detail.value.use_browser_time
     _config.use_day_night_colors = event.detail.value.use_day_night_colors
     _config.view_index = event.detail.value.view_index
+    _config.styles = event.detail.value.styles
 
     this.config = _config
 

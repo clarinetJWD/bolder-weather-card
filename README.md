@@ -7,7 +7,6 @@ showing the current date, time and a weather forecast in a bold style suitable f
 
 Credits go to [pkissling](https://github.com/pkissling) for the initial [Clock Weather Card](https://github.com/pkissling/clock-weather-card) that this project is based on, and [basmilius](https://github.com/basmilius) for the awesome [weather icons](https://github.com/basmilius/weather-icons). Many icons were modified by me to better suit this card.
 
-
 ## FAQ
 
 * [Why don't I see the current day in my weather forecast?](#why-dont-i-see-the-current-day-in-my-weather-forecast)
@@ -111,6 +110,13 @@ uv_sensor: sensor.uv_index
 uv_use_color: false
 use_day_night_colors: true
 use_time_as_primary: false
+styles:
+  - variable: bolder-weather-card-forecast-background-color
+    value: red
+  - variable: bolder-weather-card-primary-text-size
+    value: 12pt
+  - variable: bolder-weather-card-primary-text-color
+    value: '#0000ff'
 ```
 
 ### Options
@@ -143,21 +149,26 @@ use_time_as_primary: false
 | aqi_use_color         | boolean          | **Optional** | When true, the AQI text is colored. When false, it uses the normal bottom text color.                                                                                                                                             | `true`    |
 | uv_sensor             | string           | **Optional** | ID of the UV Index sensor entity. It is used to show the UV based on a sensor and will only show it if value is provided.                                                                                                         | `''`      |
 | uv_use_color          | boolean          | **Optional** | When true, the UV text is colored. When false, it uses the normal bottom text color.                                                                                                                                              | `true`    |
-| use_day_night_colors  | boolean          | **Optional** | When ture, the card uses day night colors (blue, dark blue) and text colors to match. When false, uses your theme's normal colors.                                                                                                | `true`    |
+| use_day_night_colors  | boolean          | **Optional** | When true, the card uses day night colors (blue, dark blue) and text colors to match. When false, uses your theme's normal colors.                                                                                                | `true`    |
+| styles                | StyleItem[]      | **Optional** | Allows setting theme style variables on a per-card basis without editing the theme.                                                                                                                                               | `[]`      |
 
 ## Theme Variables
+
 Almost every aspect of this card can be modified using theme variables (and without card-mod).
 
 Just add a line to your theme's yaml file with the variable name and value to override the default:
+
 ```yaml
 bolder-weather-card-background: red # makes the card red when use_day_night_colors is off.
 ```
 
 Notes:
+
 * Fallback 1, Fallback 2, and Default are the variables and values that it will use if that line's variable is not defined.
 * Most "Color" variables have three varieties: a normal one, one ending in "-day", and one ending in "-night". The one without "day/night" is used when use_day_night_colors is off. When use_day_night_colorsis on, the "-day" version is used during the daytime, and the "-night" one is used at night, determined by your `sun` entity.
 
 ### Overall Card Variables
+
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
 | bolder-weather-card-today-height | The height of the Today section at the top of the card. ||| Auto-Size |
@@ -176,6 +187,7 @@ Notes:
 | bolder-weather-card-padding | The internal padding between the card border and the contents. ||| 16px |
 
 ### Today Section Variables
+
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
 | **Today Image** |||||
@@ -277,6 +289,7 @@ Notes:
 | bolder-weather-card-aqi-maroon-text-color-night | AQI  text nighttime color when `use_day_night_colors` is on. ||| --bolder-weather-card-aqi-maroon-text-color |
 
 ### Title/Caption Section Variables
+
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
 | bolder-weather-card-title-text-color | The color of the Caption text when `use_day_night_colors` is off. ||| --bolder-weather-card-primary-text-color |
@@ -285,11 +298,12 @@ Notes:
 | bolder-weather-card-title-text-outline-color | The outline color of the Caption text when `use_day_night_colors` is off. ||| --bolder-weather-card-primary-text-outline-color |
 | bolder-weather-card-title-text-outline-color-day | The daytime outline color of the Caption text when `use_day_night_colors` is on. ||| --bolder-weather-card-primary-text-outline-color-day |
 | bolder-weather-card-title-text-outline-color-night | The nighttime outline color of the Caption text when `use_day_night_colors` is on. ||| --bolder-weather-card-primary-text-outline-color-night |
-| bolder-weather-card-title-text-size | The title text font size. ||| --ha-card-header-font-size |  ||| 24px |
+| bolder-weather-card-title-text-size | The title text font size. | --ha-card-header-font-size || 24px |
 | bolder-weather-card-title-text-font-weight | The title text font weight. ||| 400 |
 | bolder-weather-card-title-padding | The padding around the title text (between Today and Forecast sections). ||| 12px 16px 16px |
 
 ### Forecast Section Variables
+
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
 | **Main** |||||
@@ -332,7 +346,7 @@ Notes:
 | bolder-weather-card-forecast-text-outline-color | The text outline color for the labels in the Forecast section when `use_day_night_colors` is off. ||| --bolder-weather-card-background |
 | bolder-weather-card-forecast-text-outline-color-day | The daytime text outline color for the labels in the Forecast section when `use_day_night_colors` is on. ||| --bolder-weather-card-background-day |
 | bolder-weather-card-forecast-text-outline-color-night | The nighttime text outline color for the labels in the Forecast section when `use_day_night_colors` is on. ||| --bolder-weather-card-background-night |
-    
+
 ## Footnotes
 
 [^2]: Supported languages: `ar`, `bg`, `ca`, `cs`, `cy`, `da`, `de`, `el`,`en`, `es`, `et`, `fi`, `fr`, `he`, `hu`, `hr`, `id`, `is`, `it`, `ko`, `lb`, `lt`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `ro`, `ru`, `sk`, `sl`, `sr`, `sr-Latn`, `sv`, `th`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-TW`

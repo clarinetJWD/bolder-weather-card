@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup, css, unsafeCSS } from 'lit'
+import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup, css, unsafeCSS, type CSSResult } from 'lit'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { customElement, property, state } from 'lit/decorators.js'
 import {
@@ -23,7 +23,8 @@ import {
   type Weather,
   WeatherEntityFeature,
   type WeatherForecast,
-  type WeatherForecastEvent
+  type WeatherForecastEvent,
+  type StyleItem
 } from './types'
 import { GetCss } from './styles'
 import { actionHandler } from './action-handler-directive'
@@ -194,6 +195,7 @@ export class BolderWeatherCard extends LitElement {
             </bolder-weather-card-forecast>`
         : ''}
         </div>
+        <style>${this.config.styles ? getStyleOverrideFromConfig(this.config.styles) : css``}</style>
       </ha-card>
     `
   }
@@ -474,7 +476,8 @@ export class BolderWeatherCard extends LitElement {
       uv_sensor: config.uv_sensor ?? undefined,
       uv_use_color: config.uv_use_color ?? true,
       use_day_night_colors: config.use_day_night_colors ?? true,
-      use_time_as_primary: config.use_time_as_primary ?? false
+      use_time_as_primary: config.use_time_as_primary ?? false,
+      styles: config.styles ?? []
     }
   }
 
@@ -850,4 +853,12 @@ export class BolderWeatherCard extends LitElement {
     }
     return DateTime.fromJSDate(new Date(date))
   }
+}
+
+function getStyleOverrideFromConfig (styles: StyleItem[]): CSSResult {
+  const styleLines: string[] = styles.map((s) => `--${s.variable}_internal: ${s.value} !important;`)
+  return css`
+:host { 
+  ${unsafeCSS(styleLines.join('/n'))} 
+}`
 }
