@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.2.2...v1.3.0) (2025-04-11)
+
+
+### Features
+
+* Added the ability to set the time as the Primary Text. ([2c7cb40](https://github.com/clarinetJWD/bolder-weather-card/commit/2c7cb40cd4704423539b6473abae3008b7b88601))
+
 ## [1.2.2](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.2.1...v1.2.2) (2025-04-11)
 
 
