@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.4.0...v1.5.0) (2025-04-14)
+
+
+### Features
+
+* Card styles configuration no longer  needs the variable prefix `bolder-weather-card`. ([5032c05](https://github.com/clarinetJWD/bolder-weather-card/commit/5032c052487315af590506f85c3ad5ee414a9b2a))
+
 ## [1.4.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.3.0...v1.4.0) (2025-04-12)
 
 
