@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.3.0...v1.4.0) (2025-04-12)
+
+
+### Features
+
+* Theme variables can now be set in configuration on a per-card basis. ([82dd320](https://github.com/clarinetJWD/bolder-weather-card/commit/82dd32001c0f06abf88c02a9fd067fb7a87194f6))
+
 ## [1.3.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.2.2...v1.3.0) (2025-04-11)
 
 
