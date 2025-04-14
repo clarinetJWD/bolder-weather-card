@@ -111,11 +111,11 @@ uv_use_color: false
 use_day_night_colors: true
 use_time_as_primary: false
 styles:
-  - variable: bolder-weather-card-forecast-background-color
+  - variable: forecast-background-color
     value: red
-  - variable: bolder-weather-card-primary-text-size
+  - variable: primary-text-size
     value: 12pt
-  - variable: bolder-weather-card-primary-text-color
+  - variable: primary-text-color
     value: '#0000ff'
 ```
 
@@ -154,7 +154,9 @@ styles:
 
 ## Theme Variables
 
-Almost every aspect of this card can be modified using theme variables (and without card-mod).
+Almost every aspect of this card can be modified using theme variables (and without card-mod). These can be applied in two ways, see below.
+
+### Modifying your theme's YAML file
 
 Just add a line to your theme's yaml file with the variable name and value to override the default:
 
@@ -162,12 +164,31 @@ Just add a line to your theme's yaml file with the variable name and value to ov
 bolder-weather-card-background: red # makes the card red when use_day_night_colors is off.
 ```
 
+### Using card configuration
+
+You can add styles to an individual card using it's `styles:` option. All theme variables are supported this way, and the configuration format should be:
+
+```yaml
+styles:
+  - variable: forecast-background-color
+    value: red
+  - variable: primary-text-size
+    value: 12pt
+  - variable: primary-text-color
+    value: '#0000ff'
+```
+
+Note that you do not need the `bolder-weather-card` prefix when specifying variables this way (though it will work if you add it). If the prefix isn't found, it will add it automatically.
+
+For example, if you enter `variable: forecast-background-color`, the CSS variable created will be `--bolder-weather-card-forecast-background-color_internal`. 
+The `_internal` flag is used internally only, and should never be specified.
+
+### Overall Card Variables
+
 Notes:
 
 * Fallback 1, Fallback 2, and Default are the variables and values that it will use if that line's variable is not defined.
 * Most "Color" variables have three varieties: a normal one, one ending in "-day", and one ending in "-night". The one without "day/night" is used when use_day_night_colors is off. When use_day_night_colorsis on, the "-day" version is used during the daytime, and the "-night" one is used at night, determined by your `sun` entity.
-
-### Overall Card Variables
 
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
