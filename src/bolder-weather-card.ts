@@ -856,7 +856,7 @@ export class BolderWeatherCard extends LitElement {
 }
 
 function getStyleOverrideFromConfig (styles: StyleItem[]): CSSResult {
-  const styleLines: string[] = styles.map((s) => `--${s.variable}_internal: ${s.value} !important;`)
+  const styleLines: string[] = styles.map((s) => s.variable.startsWith('bolder-weather-card-') ? `--${s.variable}_internal: ${s.value} !important;` : `--bolder-weather-card-${s.variable}_internal: ${s.value} !important;`)
   return css`
 :host { 
   ${unsafeCSS(styleLines.join('/n'))} 
