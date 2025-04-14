@@ -195,7 +195,7 @@ export class BolderWeatherCard extends LitElement {
             </bolder-weather-card-forecast>`
         : ''}
         </div>
-        <style>${this.config.styles ? getStyleOverrideFromConfig(this.config.styles) : css``}</style>
+        <style>${this.config.styles ? this.getStyleOverrideFromConfig(this.config.styles) : css``}</style>
       </ha-card>
     `
   }
@@ -853,12 +853,12 @@ export class BolderWeatherCard extends LitElement {
     }
     return DateTime.fromJSDate(new Date(date))
   }
-}
 
-function getStyleOverrideFromConfig (styles: StyleItem[]): CSSResult {
-  const styleLines: string[] = styles.map((s) => s.variable.startsWith('bolder-weather-card-') ? `--${s.variable}_internal: ${s.value} !important;` : `--bolder-weather-card-${s.variable}_internal: ${s.value} !important;`)
-  return css`
+  private getStyleOverrideFromConfig (styles: StyleItem[]): CSSResult {
+    const styleLines: string[] = styles.map((s) => s.variable.startsWith('bolder-weather-card-') ? `--${s.variable}_internal: ${s.value} !important;` : `--bolder-weather-card-${s.variable}_internal: ${s.value} !important;`)
+    return css`
 :host { 
   ${unsafeCSS(styleLines.join('/n'))} 
 }`
+  }
 }

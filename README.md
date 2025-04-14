@@ -152,11 +152,11 @@ styles:
 | use_day_night_colors  | boolean          | **Optional** | When true, the card uses day night colors (blue, dark blue) and text colors to match. When false, uses your theme's normal colors.                                                                                                | `true`    |
 | styles                | StyleItem[]      | **Optional** | Allows setting theme style variables on a per-card basis without editing the theme.                                                                                                                                               | `[]`      |
 
-## Theme Variables
+### Theme Variables
 
 Almost every aspect of this card can be modified using theme variables (and without card-mod). These can be applied in two ways, see below.
 
-### Modifying your theme's YAML file
+#### Modifying your theme's YAML file
 
 Just add a line to your theme's yaml file with the variable name and value to override the default:
 
@@ -164,7 +164,7 @@ Just add a line to your theme's yaml file with the variable name and value to ov
 bolder-weather-card-background: red # makes the card red when use_day_night_colors is off.
 ```
 
-### Using card configuration
+#### Using card configuration
 
 You can add styles to an individual card using it's `styles:` option. All theme variables are supported this way, and the configuration format should be:
 
@@ -180,10 +180,12 @@ styles:
 
 Note that you do not need the `bolder-weather-card` prefix when specifying variables this way (though it will work if you add it). If the prefix isn't found, it will add it automatically.
 
-For example, if you enter `variable: forecast-background-color`, the CSS variable created will be `--bolder-weather-card-forecast-background-color_internal`. 
+For example, if you enter `variable: forecast-background-color`, the CSS variable created will be `--bolder-weather-card-forecast-background-color_internal`.
 The `_internal` flag is used internally only, and should never be specified.
 
-### Overall Card Variables
+#### All Available Variables
+
+##### Overall Card Variables
 
 Notes:
 
@@ -207,7 +209,7 @@ Notes:
 | bolder-weather-card-box-shadow | the drop shadow behind the card ||| --ha-card-box-shadow |
 | bolder-weather-card-padding | The internal padding between the card border and the contents. ||| 16px |
 
-### Today Section Variables
+##### Today Section Variables
 
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
@@ -309,7 +311,7 @@ Notes:
 | bolder-weather-card-aqi-maroon-text-color-day | AQI Maroon text daytime color when `use_day_night_colors` is on. ||| --bolder-weather-card-aqi-maroon-text-color |
 | bolder-weather-card-aqi-maroon-text-color-night | AQI  text nighttime color when `use_day_night_colors` is on. ||| --bolder-weather-card-aqi-maroon-text-color |
 
-### Title/Caption Section Variables
+##### Title/Caption Section Variables
 
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
@@ -323,7 +325,7 @@ Notes:
 | bolder-weather-card-title-text-font-weight | The title text font weight. ||| 400 |
 | bolder-weather-card-title-padding | The padding around the title text (between Today and Forecast sections). ||| 12px 16px 16px |
 
-### Forecast Section Variables
+##### Forecast Section Variables
 
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
