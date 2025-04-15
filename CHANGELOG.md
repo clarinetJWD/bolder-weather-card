@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.0...v1.5.1) (2025-04-15)
+
+
+### Bug Fixes
+
+* Fixes an issue where the Title Image would always use 100% for Max Width. ([ae2dd51](https://github.com/clarinetJWD/bolder-weather-card/commit/ae2dd5198d3178559a37617a9215ede14da789f4))
+
 ## [1.5.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.4.0...v1.5.0) (2025-04-14)
 
 
