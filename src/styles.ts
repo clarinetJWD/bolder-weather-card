@@ -299,6 +299,11 @@ ${myVar ? ':host{}' : ':host{}'}
       display: contents;
     }
 
+    .grow-img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
     .today-img-crop {
       max-width: calc(var(--bolder-weather-card-today-image-max-width_internal) + var(--bolder-weather-card-border-width_internal));
       max-height: calc(var(--bolder-weather-card-today-image-max-height_internal) + var(--bolder-weather-card-border-width_internal));
@@ -398,11 +403,6 @@ ${myVar ? ':host{}' : ':host{}'}
       align-items: center;
       justify-content: center;
       max-width: 100%;
-    }
-
-    .grow-img {
-      max-width: 100%;
-      max-height: 100%;
     }
 
     forecast-temperature-bar {
