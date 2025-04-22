@@ -585,7 +585,7 @@ export class BolderWeatherCard extends LitElement {
   }
 
   private getLocale (): string {
-    return this.config.locale ?? this.hass.locale.language ?? 'en-GB'
+    return this.config.locale ?? this.hass.locale?.language ?? 'en-US'
   }
 
   private date (): string {
