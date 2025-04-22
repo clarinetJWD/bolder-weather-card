@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.1...v1.5.2) (2025-04-22)
+
+
+### Bug Fixes
+
+* Fixes an issue when specifying styles via yaml configuration: Only the first style item was being applied. ([f31bb3d](https://github.com/clarinetJWD/bolder-weather-card/commit/f31bb3db7c19b9dce257042ca541ae18e9fb7449))
+
 ## [1.5.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.0...v1.5.1) (2025-04-15)
 
 
