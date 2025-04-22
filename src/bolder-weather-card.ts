@@ -858,7 +858,7 @@ export class BolderWeatherCard extends LitElement {
     const styleLines: string[] = styles.map((s) => s.variable.startsWith('bolder-weather-card-') ? `--${s.variable}_internal: ${s.value} !important;` : `--bolder-weather-card-${s.variable}_internal: ${s.value} !important;`)
     return css`
 :host { 
-  ${unsafeCSS(styleLines.join('/n'))} 
+  ${unsafeCSS(styleLines.join('\n'))} 
 }`
   }
 }
