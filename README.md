@@ -117,6 +117,8 @@ styles:
     value: 12pt
   - variable: primary-text-color
     value: '#0000ff'
+  - variable: border-width
+    value: var(--ha-card-border-width)
 ```
 
 ### Options
