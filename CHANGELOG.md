@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.3](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.2...v1.5.3) (2025-04-23)
+
+
+### Bug Fixes
+
+* Added "--card-background-color" as a card color fallback when "--ha-card-background" is not specified in the theme. ([2466429](https://github.com/clarinetJWD/bolder-weather-card/commit/2466429bfb2bfdea259bca9bacc86ab6d623fce7))
+* Fixed a null-reference error when getting the user's locale. ([9703edf](https://github.com/clarinetJWD/bolder-weather-card/commit/9703edf1e8d48296ed53b95c939a8bc25bd6129e))
+
 ## [1.5.2](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.1...v1.5.2) (2025-04-22)
 
 
