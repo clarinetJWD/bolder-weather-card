@@ -62,44 +62,117 @@ export class BolderWeatherCardEditor extends LitElement implements LovelaceCardE
       .hass=${this.hass}
       .data=${this.config}
       .schema=${[
-        { name: 'entity', locale: this.getLocale(), selector: { entity: { domain: 'weather' } } },
-        { name: 'title', locale: this.getLocale(), selector: { text: {} } },
-        { name: 'use_day_night_colors', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'sun_entity', locale: this.getLocale(), selector: { entity: { domain: 'sun' } } },
-        { name: 'temperature_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
-        { name: 'humidity_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
-        { name: 'apparent_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
-        { name: 'aqi_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
-        { name: 'uv_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
-        { name: 'forecast_rows', locale: this.getLocale(), selector: { text: { type: 'number' } } },
-        { name: 'locale', locale: this.getLocale(), selector: { text: {} } },
         {
-          name: 'time_format',
+          title: localize('editor.basic_settings', this.getLocale()),
+          type: 'expandable' as const,
+          flatten: true,
+          expanded: true,
           locale: this.getLocale(),
-          selector: {
-            select: {
-              multiple: false,
-              options: [
-                { label: '24', value: '24' },
-                { label: '12', value: '12' }
+          schema: [
+            { name: 'entity', locale: this.getLocale(), selector: { entity: { domain: 'weather' } } },
+            { name: 'title', locale: this.getLocale(), selector: { text: {} } },
+            { name: 'sun_entity', locale: this.getLocale(), selector: { entity: { domain: 'sun' } } },
+            { name: 'use_day_night_colors', locale: this.getLocale(), selector: { boolean: {} } }
+          ]
+        },
+        {
+          title: localize('editor.weather_sensor_settings', this.getLocale()),
+          type: 'expandable' as const,
+          flatten: false,
+          expanded: false,
+          locale: this.getLocale(),
+          schema: [
+            { name: 'temperature_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
+            { name: 'humidity_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
+            { name: 'apparent_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
+            {
+              title: localize('editor.aqi_settings', this.getLocale()),
+              type: 'expandable' as const,
+              flatten: false,
+              expanded: true,
+              locale: this.getLocale(),
+              schema: [
+                { name: 'aqi_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
+                { name: 'aqi_use_color', locale: this.getLocale(), selector: { boolean: {} } }
+              ]
+            },
+            {
+              title: localize('editor.uv_settings', this.getLocale()),
+              type: 'expandable' as const,
+              flatten: false,
+              expanded: true,
+              locale: this.getLocale(),
+              schema: [
+                { name: 'uv_sensor', locale: this.getLocale(), selector: { entity: { domain: 'sensor' } } },
+                { name: 'uv_use_color', locale: this.getLocale(), selector: { boolean: {} } }
               ]
             }
-          }
+          ]
         },
-        { name: 'time_zone', locale: this.getLocale(), selector: { text: {} } },
-        { name: 'time_pattern', locale: this.getLocale(), selector: { text: {} } },
-        { name: 'date_pattern', locale: this.getLocale(), selector: { text: {} } },
-        { name: 'hide_today_section', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'hide_forecast_section', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'show_humidity', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'hourly_forecast', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'hide_clock', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'use_time_as_primary', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'hide_date', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'use_browser_time', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'show_decimal', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'aqi_use_color', locale: this.getLocale(), selector: { boolean: {} } },
-        { name: 'uv_use_color', locale: this.getLocale(), selector: { boolean: {} } }
+        {
+          title: localize('editor.time_and_date_settings', this.getLocale()),
+          type: 'expandable' as const,
+          flatten: false,
+          expanded: false,
+          locale: this.getLocale(),
+          schema: [
+            {
+              name: 'time_format',
+              locale: this.getLocale(),
+              selector: {
+                select: {
+                  multiple: false,
+                  options: [
+                    { label: '24', value: '24' },
+                    { label: '12', value: '12' }
+                  ]
+                }
+              }
+            },
+            { name: 'time_zone', locale: this.getLocale(), selector: { text: {} } },
+            { name: 'time_pattern', locale: this.getLocale(), selector: { text: {} } },
+            { name: 'date_pattern', locale: this.getLocale(), selector: { text: {} } }
+          ]
+        },
+        {
+          title: localize('editor.hidden_item_settings', this.getLocale()),
+          type: 'expandable' as const,
+          flatten: false,
+          expanded: false,
+          locale: this.getLocale(),
+          schema: [
+            { name: 'hide_today_section', locale: this.getLocale(), selector: { boolean: {} } },
+            { name: 'hide_forecast_section', locale: this.getLocale(), selector: { boolean: {} } },
+            { name: 'hide_clock', locale: this.getLocale(), selector: { boolean: {} } },
+            { name: 'hide_date', locale: this.getLocale(), selector: { boolean: {} } },
+            { name: 'show_humidity', locale: this.getLocale(), selector: { boolean: {} } },
+            { name: 'show_decimal', locale: this.getLocale(), selector: { boolean: {} } }
+          ]
+        },
+        {
+          title: localize('editor.forecast_settings', this.getLocale()),
+          type: 'expandable' as const,
+          flatten: false,
+          expanded: false,
+          locale: this.getLocale(),
+          schema: [
+            { name: 'hide_forecast_section', locale: this.getLocale(), selector: { boolean: {} } },
+            { name: 'hourly_forecast', locale: this.getLocale(), selector: { boolean: {} } },
+            { name: 'forecast_rows', locale: this.getLocale(), selector: { text: { type: 'number' } } }
+          ]
+        },
+        {
+          title: localize('editor.advanced_settings', this.getLocale()),
+          type: 'expandable' as const,
+          flatten: false,
+          expanded: false,
+          locale: this.getLocale(),
+          schema: [
+            { name: 'locale', locale: this.getLocale(), selector: { text: {} } },
+            { name: 'use_time_as_primary', locale: this.getLocale(), selector: { boolean: {} } },
+            { name: 'use_browser_time', locale: this.getLocale(), selector: { boolean: {} } }
+          ]
+        }
       ]}
       .computeLabel=${(schema) => this.computeLabel(schema)}
       @value-changed=${(event) => { this.valueChanged(event) }}

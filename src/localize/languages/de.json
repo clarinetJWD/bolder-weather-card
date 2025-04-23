@@ -57,6 +57,14 @@
     "uv_sensor": "UV Index Sensor",
     "uv_use_color": "Use Color for UV Index",
     "use_day_night_colors": "Use Day/Night Colors",
-    "use_time_as_primary": "Use Time as the Primary Element"
+    "use_time_as_primary": "Use Time as the Primary Element",
+    "weather_sensor_settings": "Additional Weather Sensors",
+    "time_and_date_settings": "Time and Date Settings",
+    "hidden_item_settings": "Hidden/Shown Items",
+    "forecast_settings": "Forecast Settings",
+    "advanced_settings": "Advanced Settings",
+    "aqi_settings": "AQI Settings",
+    "uv_settings": "UV Settings",
+    "basic_settings": "Basic Settings"
   }
 }
