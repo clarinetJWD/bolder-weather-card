@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.4...v1.6.0) (2025-04-23)
+
+
+### Features
+
+* Organized configuration into collapsible sections ([2ee3fbc](https://github.com/clarinetJWD/bolder-weather-card/commit/2ee3fbc72480b1a680579e595930554cb0271271))
+
 ## [1.5.4](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.3...v1.5.4) (2025-04-23)
 
 
