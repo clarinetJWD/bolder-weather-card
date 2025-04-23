@@ -5,7 +5,7 @@ ${myVar ? ':host{}' : ':host{}'}
       /*** Card Variables */
       --bolder-weather-card-today-height_internal: var(--bolder-weather-card-today-height, calc(var(--bolder-weather-card-primary-text-size_internal) + var(--bolder-weather-card-top-text-size_internal) + var(--bolder-weather-card-state-text-size_internal) + var(--bolder-weather-card-bottom-text-size_internal) + var(--bolder-weather-card-primary-text-space-above_internal) + var(--bolder-weather-card-primary-text-space-below_internal) + var(--bolder-weather-card-top-text-space-above_internal) + var(--bolder-weather-card-top-text-space-below_internal) + var(--bolder-weather-card-bottom-text-space-above_internal) + var(--bolder-weather-card-bottom-text-space-below_internal) + var(--bolder-weather-card-padding_internal) + var(--bolder-weather-card-padding_internal)));
 
-      --bolder-weather-card-background_internal: var(--bolder-weather-card-background, var(--ha-card-background));
+      --bolder-weather-card-background_internal: var(--bolder-weather-card-background, var(--ha-card-background, var(--card-background-color)));
       --bolder-weather-card-background-day_internal: var(--bolder-weather-card-background-day, rgb(47, 152, 234));
       --bolder-weather-card-background-night_internal: var(--bolder-weather-card-background-night, rgb(15, 56, 118));
 

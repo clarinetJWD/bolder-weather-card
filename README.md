@@ -195,7 +195,7 @@ Notes:
 | Variable              | Description                                                    | Fallback 1   | Fallback 2   | Default   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------ | ------------ | --------- |
 | bolder-weather-card-today-height | The height of the Today section at the top of the card. ||| Auto-Size |
-| bolder-weather-card-background | The background color of the card when `use_day_night_colors` is off. ||| --ha-card-background |
+| bolder-weather-card-background | The background color of the card when `use_day_night_colors` is off. | --ha-card-background || --card-background-color |
 | bolder-weather-card-background-day | The background color of the card during daytime when `use_day_night_colors` is on. ||| rgb(47, 152, 234) |
 | bolder-weather-card-background-night | The background color of the card during nighttime when `use_day_night_colors` is on. ||| rgb(15, 56, 118) |
 ||||||
