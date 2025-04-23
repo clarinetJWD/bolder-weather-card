@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.4](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.3...v1.5.4) (2025-04-23)
+
+
+### Bug Fixes
+
+* Fixed an issue that caused the card to render every second, even if the time format did not include seconds. ([ac52552](https://github.com/clarinetJWD/bolder-weather-card/commit/ac525521e12728cfe1365c2a8e87aa59cab097e9))
+
 ## [1.5.3](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.2...v1.5.3) (2025-04-23)
 
 
