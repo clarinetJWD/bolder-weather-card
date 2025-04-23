@@ -13,7 +13,6 @@ Check out the other "Bolder" cards:
 
 * [Bolder Container Card](https://www.github.com/clarinetJWD/bolder-container-card/): A new stack-in-card that allows theming independent of other cards.
 
-
 ## FAQ
 
 * [Why don't I see the current day in my weather forecast?](#why-dont-i-see-the-current-day-in-my-weather-forecast)
