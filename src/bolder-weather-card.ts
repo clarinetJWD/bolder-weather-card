@@ -9,7 +9,8 @@ import {
   handleAction,
   TimeFormat,
   type ActionConfig,
-  type LovelaceCardEditor
+  type LovelaceCardEditor,
+  formatTime
 } from 'custom-card-helpers' // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
 
 import {
@@ -81,8 +82,16 @@ export class BolderWeatherCard extends LitElement {
     super()
     this.currentDate = DateTime.now()
     const msToNextSecond = (1000 - this.currentDate.millisecond)
-    setTimeout(() => setInterval(() => { this.currentDate = DateTime.now() }, 1000), msToNextSecond)
-    setTimeout(() => { this.currentDate = DateTime.now() }, msToNextSecond)
+    setTimeout(() => setInterval(() => {
+      if (this.time() !== this.time(DateTime.now())) {
+        this.currentDate = DateTime.now()
+      }
+    }, 1000), msToNextSecond)
+    setTimeout(() => {
+      if (this.time() !== this.time(DateTime.now())) {
+        this.currentDate = DateTime.now()
+      }
+    }, msToNextSecond)
   }
 
   public static getStubConfig (_hass: HomeAssistant, entities: string[], entitiesFallback: string[]): Record<string, unknown> {
