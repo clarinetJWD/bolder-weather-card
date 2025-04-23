@@ -7,6 +7,13 @@ showing the current date, time and a weather forecast in a bold style suitable f
 
 Credits go to [pkissling](https://github.com/pkissling) for the initial [Clock Weather Card](https://github.com/pkissling/clock-weather-card) that this project is based on, and [basmilius](https://github.com/basmilius) for the awesome [weather icons](https://github.com/basmilius/weather-icons). Many icons were modified by me to better suit this card.
 
+## The Bolder Collection
+
+Check out the other "Bolder" cards:
+
+* [Bolder Container Card](https://www.github.com/clarinetJWD/bolder-container-card/): A new stack-in-card that allows theming independent of other cards.
+
+
 ## FAQ
 
 * [Why don't I see the current day in my weather forecast?](#why-dont-i-see-the-current-day-in-my-weather-forecast)
@@ -117,6 +124,8 @@ styles:
     value: 12pt
   - variable: primary-text-color
     value: '#0000ff'
+  - variable: border-width
+    value: var(--ha-card-border-width)
 ```
 
 ### Options
