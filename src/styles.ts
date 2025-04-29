@@ -162,6 +162,8 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-forecast-text-outline-color_internal: var(--bolder-weather-card-forecast-text-outline-color, var(--bolder-weather-card-background_internal));
       --bolder-weather-card-forecast-text-outline-color-day_internal: var(--bolder-weather-card-forecast-text-outline-color-day, var(--bolder-weather-card-background-day_internal));
       --bolder-weather-card-forecast-text-outline-color-night_internal: var(--bolder-weather-card-forecast-text-outline-color-night, var(--bolder-weather-card-background-night_internal));
+      --bolder-weather-card-forecast-text-size_internal: var(--bolder-weather-card-forecast-text-size, inherit);
+      --bolder-weather-card-forecast-text-font-weight_internal: var(--bolder-weather-card-forecast-text-font-weight, inherit);
     }
 
     .bolder-weather-card-day {
@@ -393,9 +395,10 @@ ${myVar ? ':host{}' : ':host{}'}
     }
 
     forecast-text {
-      text-align: var(--bolder-weather-card-forecast-text-align);
       white-space: nowrap;
       text-overflow: clip;
+      font-size: var(--bolder-weather-card-forecast-text-size_internal);
+      font-weight: var(--bolder-weather-card-forecast-text-font-weight_internal);
     }
 
     forecast-icon {

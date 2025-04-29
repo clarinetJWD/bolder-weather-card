@@ -372,6 +372,9 @@ Notes:
 | **Text** |||||
 ||||||
 | bolder-weather-card-forecast-text-color | The text color for the labels in the Forecast section when `use_day_night_colors` is off. ||| --bolder-weather-card-primary-text-color |
+| bolder-weather-card-forecast-text-size | The size of the text in the Forecast section. You can mess up the layout, use `bolder-weather-card-forecast-col-[type]-size` to set column widths manually. ||| inherit |
+| bolder-weather-card-forecast-text-font-weight | The weight of the text in the Forecast section ||| inherit |
+| bolder-weather-card-forecast-text-color | The text color for the labels in the Forecast section when `use_day_night_colors` is off. ||| --bolder-weather-card-primary-text-color |
 | bolder-weather-card-forecast-text-color-day | The daytime text color for the labels in the Forecast section when `use_day_night_colors` is on. ||| --bolder-weather-card-primary-text-color-day |
 | bolder-weather-card-forecast-text-color-night | The nighttime text color for the labels in the Forecast section when `use_day_night_colors` is on. ||| --bolder-weather-card-primary-text-color-night |
 | bolder-weather-card-forecast-text-outline-color | The text outline color for the labels in the Forecast section when `use_day_night_colors` is off. ||| --bolder-weather-card-background |
