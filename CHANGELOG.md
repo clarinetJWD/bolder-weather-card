@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.6.0...v1.7.0) (2025-04-29)
+
+
+### Features
+
+* Added ability to set the forecast section font size and weight. ([a4434fa](https://github.com/clarinetJWD/bolder-weather-card/commit/a4434faac76cdb55fa78d6a17a294629c3b9f6a0))
+
+
+### Bug Fixes
+
+* Removed variable for forecast section text align, as it is overridden in render and did not function. ([a4434fa](https://github.com/clarinetJWD/bolder-weather-card/commit/a4434faac76cdb55fa78d6a17a294629c3b9f6a0))
+
 ## [1.6.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.5.4...v1.6.0) (2025-04-23)
 
 
