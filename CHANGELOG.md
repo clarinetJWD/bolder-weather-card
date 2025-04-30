@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.8.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.7.0...v1.8.0) (2025-04-30)
+
+
+### Features
+
+* Added ability to show the low and high temperatures flanking the current temperature (Only when using temperature as the primary element) ([12cde9e](https://github.com/clarinetJWD/bolder-weather-card/commit/12cde9e7e7725412dbfb4dd6d74ed7f0985acc7e))
+* Show or hide dot separators between primary elements. ([12cde9e](https://github.com/clarinetJWD/bolder-weather-card/commit/12cde9e7e7725412dbfb4dd6d74ed7f0985acc7e))
+
+
+### Bug Fixes
+
+* Fixed wonky layout with the vertical position of the temperature unit. ([12cde9e](https://github.com/clarinetJWD/bolder-weather-card/commit/12cde9e7e7725412dbfb4dd6d74ed7f0985acc7e))
+
 ## [1.7.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.6.0...v1.7.0) (2025-04-29)
 
 
