@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup, css, unsafeCSS, type CSSResult } from 'lit'
+import { LitElement, html, type TemplateResult, type PropertyValues, type CSSResultGroup, css, unsafeCSS, type CSSResult, type HTMLTemplateResult } from 'lit'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { customElement, property, state } from 'lit/decorators.js'
 import {
@@ -247,15 +247,45 @@ export class BolderWeatherCard extends LitElement {
     const aqiString = this.localize('misc.aqi')
     const uvString = this.localize('misc.uv')
     const daytime = this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
+    const todayForecast = this.mergeForecasts(1, false)
+    const localizedLow = todayForecast[0] !== null ? this.toConfiguredTempWithoutUnit(tempUnit, todayForecast[0].templow) : null
+    const localizedHigh = todayForecast[0] !== null ? this.toConfiguredTempWithoutUnit(tempUnit, todayForecast[0].temperature) : null
+    let todayMainHtml: HTMLTemplateResult
     let topStrings = [
       this.config.hide_date ? undefined : this.date(),
       this.config.hide_clock || this.config.use_time_as_primary ? undefined : this.time(),
       this.config.use_time_as_primary ? `${localizedTemp} ${localizedUnit}` : undefined
     ]
 
+    if (this.config?.show_low_high_on_primary && !this.config?.use_time_as_primary) {
+      todayMainHtml = html`
+        <div class="primary-temp-container" style="display: flex; align-items: center">
+          <div class="temp-and-unit temp-low-high temp-low">
+            <span>${localizedLow}</span>
+          </div>
+          <div class="temp-dot"></div>
+          <div class="temp-and-unit temp-primary">
+            <span>${localizedTemp}</span>
+          </div>
+          <div class="temp-dot"></div>
+          <div class="temp-and-unit temp-low-high temp-high">
+            <span>${localizedHigh}</span>
+            <span class="bolder-weather-card-temp-unit bolder-weather-card-low-high-temp-unit">${localizedUnit}</span>
+          </div>
+        </div>`
+    } else {
+      todayMainHtml = html`
+      <div class="primary-temp-container" style="display: flex; align-items: center">
+        <div class="temp-and-unit temp-primary">
+          <span>${localizedTemp}</span>
+          <span class="bolder-weather-card-temp-unit bolder-weather-card-low-high-temp-unit">${localizedUnit}</span>
+        </div>
+      </div>`
+    }
+
     topStrings = topStrings.filter(Boolean)
 
-    const centerString = this.config.use_time_as_primary ? html`${this.time()}` : html`${localizedTemp}<span class="bolder-weather-card-temp-unit">${localizedUnit}</span>`
+    const centerString = this.config.use_time_as_primary ? html`${this.time()}` : todayMainHtml
 
     const stateString = html`${weatherString}`
     const apparentHtml = html`${apparentString} ${localizedApparent} ${this.config.show_humidity || this.config.aqi_sensor ? html`` : html``}`
@@ -390,7 +420,7 @@ export class BolderWeatherCard extends LitElement {
 
   // https://lit.dev/docs/components/styles/
   static get styles (): CSSResultGroup {
-    return [css`${unsafeCSS(GetCss(false))}`]
+    return [css`${unsafeCSS(GetCss())}`]
   }
 
   private gradientRange (minTemp: number, maxTemp: number, temperatureUnit: TemperatureUnit): Rgb[] {
@@ -485,6 +515,8 @@ export class BolderWeatherCard extends LitElement {
       uv_use_color: config.uv_use_color ?? true,
       use_day_night_colors: config.use_day_night_colors ?? true,
       use_time_as_primary: config.use_time_as_primary ?? false,
+      show_low_high_on_primary: config.show_low_high_on_primary ?? false,
+      show_dots_between_primary_elements: config.show_dots_between_primary_elements ?? false,
       styles: config.styles ?? []
     }
   }
@@ -864,9 +896,7 @@ export class BolderWeatherCard extends LitElement {
 
   private getStyleOverrideFromConfig (styles: StyleItem[]): CSSResult {
     const styleLines: string[] = styles.map((s) => s.variable.startsWith('bolder-weather-card-') ? `--${s.variable}_internal: ${s.value} !important;` : `--bolder-weather-card-${s.variable}_internal: ${s.value} !important;`)
-    return css`
-:host { 
-  ${unsafeCSS(styleLines.join('\n'))} 
-}`
+    const tempDotStyle: string = this.config.show_dots_between_primary_elements ? '' : '.temp-dot{ width: 0px !important; border: none !important; }'
+    return css`:host { ${unsafeCSS(styleLines.join('\n'))} } ${unsafeCSS(tempDotStyle)}`
   }
 }

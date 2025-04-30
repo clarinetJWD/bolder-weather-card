@@ -40,6 +40,8 @@ export interface BolderWeatherCardConfig extends LovelaceCardConfig {
   uv_use_color?: boolean
   use_day_night_colors?: boolean
   use_time_as_primary?: boolean
+  show_low_high_on_primary?: boolean
+  show_dots_between_primary_elements?: boolean
   styles?: StyleItem[]
 }
 
@@ -75,6 +77,8 @@ export interface MergedBolderWeatherCardConfig extends LovelaceCardConfig {
   uv_use_color: boolean
   use_day_night_colors: boolean
   use_time_as_primary: boolean
+  show_low_high_on_primary: boolean
+  show_dots_between_primary_elements: boolean
   styles?: StyleItem[]
 }
 

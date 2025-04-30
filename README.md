@@ -250,6 +250,17 @@ Notes:
 | bolder-weather-card-primary-unit-text-space-above | The extra padding above the temperature unit text. ||| calc(-1 * var(--bolder-weather-card-primary-unit-text-size_internal) / 2)) |
 | bolder-weather-card-primary-unit-text-space-below | The extra padding below the temperature unit text. ||| 0px |
 ||||||
+| **Primary Dot** | Default values for the dot separators between the primary elements. ||||
+||||||
+| --bolder-weather-card-primary-dot-size | The size of the dot between primary elements. ||| 14px |
+| --bolder-weather-card-primary-dot-color | The color of the dot between primary elements when `use_day_night_colors` is off. ||| --bolder-weather-card-primary-unit-text-color |
+| --bolder-weather-card-primary-dot-color-day | The daytime color of the dot between primary elements when `use_day_night_colors` is on. ||| --bolder-weather-card-primary-unit-text-color-day |
+| --bolder-weather-card-primary-dot-color-night | The nighttime color of the dot between primary elements when `use_day_night_colors` is on. ||| --bolder-weather-card-primary-unit-text-color-night |
+| --bolder-weather-card-primary-unit-dot-border-color | The color of the border of the dot between primary elements when `use_day_night_colors` is off. ||| --bolder-weather-card-primary-text-outline-color |
+| --bolder-weather-card-primary-unit-dot-border-color-day | The daytime color of the border of the dot between primary elements when `use_day_night_colors` is on. ||| --bolder-weather-card-primary-text-outline-color-day |
+| --bolder-weather-card-primary-unit-dot-border-color-night | The nighttime color of the border of the dot between primary elements when `use_day_night_colors` is on. ||| --bolder-weather-card-primary-text-outline-color-night |
+| --bolder-weather-card-primary-element-space-between | The space between primary elements. ||| 0.5rem |
+||||||
 | **Secondary Text** | Default values for the text above and below the primary text. ||||
 ||||||
 | bolder-weather-card-secondary-text-color | The secondary (top/bottom) text color when `use_day_night_colors` is off. ||| --secondary-text-color |

@@ -58,6 +58,8 @@
     "uv_use_color": "Use Color for UV Index",
     "use_day_night_colors": "Use Day/Night Colors",
     "use_time_as_primary": "Use Time as the Primary Element",
+    "show_low_high_on_primary": "Show Low/High Temps around Primary Temperature",
+    "show_dots_between_primary_elements": "Show Dots between primary elements",
     "weather_sensor_settings": "Additional Weather Sensors",
     "time_and_date_settings": "Time and Date Settings",
     "hidden_item_settings": "Hidden/Shown Items",

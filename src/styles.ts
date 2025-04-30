@@ -1,6 +1,5 @@
-export function GetCss (myVar: boolean): string {
+export function GetCss (): string {
   return `
-${myVar ? ':host{}' : ':host{}'}
     :host {
       /*** Card Variables */
       --bolder-weather-card-today-height_internal: var(--bolder-weather-card-today-height, calc(var(--bolder-weather-card-primary-text-size_internal) + var(--bolder-weather-card-top-text-size_internal) + var(--bolder-weather-card-state-text-size_internal) + var(--bolder-weather-card-bottom-text-size_internal) + var(--bolder-weather-card-primary-text-space-above_internal) + var(--bolder-weather-card-primary-text-space-below_internal) + var(--bolder-weather-card-top-text-space-above_internal) + var(--bolder-weather-card-top-text-space-below_internal) + var(--bolder-weather-card-bottom-text-space-above_internal) + var(--bolder-weather-card-bottom-text-space-below_internal) + var(--bolder-weather-card-padding_internal) + var(--bolder-weather-card-padding_internal)));
@@ -34,17 +33,27 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-primary-text-size_internal: var(--bolder-weather-card-primary-text-size, 75pt);
       --bolder-weather-card-primary-text-space-above_internal: var(--bolder-weather-card-primary-text-space-above, 0px);
       --bolder-weather-card-primary-text-space-below_internal: var(--bolder-weather-card-primary-text-space-below, 10px);
-      --bolder-weather-card-primary-unit-text-color_internal: var(--bolder-weather-card-primary-unit-text-color, var(--bolder-weather-card-primary-text-color_internal));
 
       /***     Primary Text (Temperature Unit) */
+      --bolder-weather-card-primary-unit-text-color_internal: var(--bolder-weather-card-primary-unit-text-color, var(--bolder-weather-card-primary-text-color_internal));
       --bolder-weather-card-primary-unit-text-color-day_internal: var(--bolder-weather-card-primary-unit-text-color-day, white);
       --bolder-weather-card-primary-unit-text-color-night_internal: var(--bolder-weather-card-primary-unit-text-color-night, white);
       --bolder-weather-card-primary-unit-text-outline-color_internal: var(--bolder-weather-card-primary-unit-text-outline-color, var(--bolder-weather-card-primary-text-outline-color_internal));
       --bolder-weather-card-primary-unit-text-outline-color-day_internal: var(--bolder-weather-card-primary-unit-text-outline-color-day, var(--bolder-weather-card-primary-text-outline-color-day_internal));
       --bolder-weather-card-primary-unit-text-outline-color-night_internal: var(--bolder-weather-card-primary-unit-text-outline-color-night, var(--bolder-weather-card-primary-text-outline-color-night_internal));
       --bolder-weather-card-primary-unit-text-size_internal: var(--bolder-weather-card-primary-unit-text-size, 30pt);
-      --bolder-weather-card-primary-unit-text-space-above_internal: var(--bolder-weather-card-primary-unit-text-space-above, calc(-1 * var(--bolder-weather-card-primary-unit-text-size_internal) / 2));
+      --bolder-weather-card-primary-unit-text-space-above_internal: var(--bolder-weather-card-primary-unit-text-space-above, 0px);
       --bolder-weather-card-primary-unit-text-space-below_internal: var(--bolder-weather-card-primary-unit-text-space-below, 0px);
+
+      /***     Primary Dot (Separater) */
+      --bolder-weather-card-primary-dot-size_internal: var(--bolder-weather-card-primary-dot-size, 14px);
+      --bolder-weather-card-primary-dot-color_internal: var(--bolder-weather-card-primary-dot-color, var(--bolder-weather-card-primary-unit-text-color_internal));
+      --bolder-weather-card-primary-dot-color-day_internal: var(--bolder-weather-card-primary-dot-color-day, var(--bolder-weather-card-primary-unit-text-color-day_internal));
+      --bolder-weather-card-primary-dot-color-night_internal: var(--bolder-weather-card-primary-dot-color-night, var(--bolder-weather-card-primary-unit-text-color-night_internal));
+      --bolder-weather-card-primary-dot-border-color_internal: var(--bolder-weather-card-primary-unit-dot-border-color, var(--bolder-weather-card-primary-text-outline-color_internal));
+      --bolder-weather-card-primary-dot-border-color-day_internal: var(--bolder-weather-card-primary-unit-dot-border-color-day, var(--bolder-weather-card-primary-text-outline-color-day_internal));
+      --bolder-weather-card-primary-dot-border-color-night_internal: var(--bolder-weather-card-primary-unit-dot-border-color-night, var(--bolder-weather-card-primary-text-outline-color-night_internal));
+      --bolder-weather-card-primary-element-space-between_internal: var(--bolder-weather-card-primary-element-space-between, 0.5rem);
 
       /***     Secondary Text (Top and Bottom Default) */
       --bolder-weather-card-secondary-text-color_internal: var(--bolder-weather-card-secondary-text-color, var(--secondary-text-color));
@@ -177,6 +186,9 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-primary-unit-text-color_internal: var(--bolder-weather-card-primary-unit-text-color-day_internal);
       --bolder-weather-card-primary-unit-text-outline-color_internal: var(--bolder-weather-card-primary-unit-text-outline-color-day_internal);
 
+      --bolder-weather-card-primary-dot-color_internal: var(--bolder-weather-card-primary-dot-color-day_internal);
+      --bolder-weather-card-primary-dot-border-color_internal: var(--bolder-weather-card-primary-dot-border-color-day_internal);
+
       --bolder-weather-card-secondary-text-color_internal: var(--bolder-weather-card-secondary-text-color-day_internal);
       --bolder-weather-card-secondary-text-outline-color_internal: var(--bolder-weather-card-secondary-text-outline-color-day_internal);
 
@@ -217,6 +229,9 @@ ${myVar ? ':host{}' : ':host{}'}
       --bolder-weather-card-primary-unit-text-color_internal: var(--bolder-weather-card-primary-unit-text-color-night_internal);
       --bolder-weather-card-primary-unit-text-outline-color_internal: var(--bolder-weather-card-primary-unit-text-outline-color-night_internal);
 
+      --bolder-weather-card-primary-dot-color_internal: var(--bolder-weather-card-primary-dot-color-night_internal);
+      --bolder-weather-card-primary-dot-border-color_internal: var(--bolder-weather-card-primary-dot-border-color-night_internal);
+
       --bolder-weather-card-secondary-text-color_internal: var(--bolder-weather-card-secondary-text-color-night_internal);
       --bolder-weather-card-secondary-text-outline-color_internal: var(--bolder-weather-card-secondary-text-outline-color-night_internal);
 
@@ -255,27 +270,13 @@ ${myVar ? ':host{}' : ':host{}'}
       border-style: var(--bolder-weather-card-border-style_internal);
       border-width: var(--bolder-weather-card-border-width_internal);
     }
-    .card-header {
-      z-index: 1;
-      color: var(--bolder-weather-card-title-text-color_internal);
-      text-shadow: -1px -1px 0 var(--bolder-weather-card-title-text-outline-color_internal), 1px -1px 0 var(--bolder-weather-card-title-text-outline-color_internal), 1px 1px 0 var(--bolder-weather-card-title-text-outline-color_internal), -1px 1px 0 var(--bolder-weather-card-title-text-outline-color_internal);
-      font-size: var(--bolder-weather-card-title-text-size_internal);
-      line-height: calc(1.2 * var(--bolder-weather-card-title-text-size_internal));
-      padding: var(--bolder-weather-card-title-padding_internal);
-      font-weight: var(--bolder-weather-card-title-text-font-weight_internal);
-    }
+
     .card-content {
       padding: 0;
       margin: 0;
     }
 
-    .bolder-weather-card-temp-unit{
-      font-size: var(--bolder-weather-card-primary-unit-text-size_internal);
-      margin: var(--bolder-weather-card-primary-unit-text-space-above_internal) 0 var(--bolder-weather-card-primary-unit-text-space-below_internal) 0;
-      color: var(--bolder-weather-card-primary-unit-text-color_internal);
-      text-shadow: -1px -1px 0 var(--bolder-weather-card-primary-unit-text-outline-color_internal), 1px -1px 0 var(--bolder-weather-card-primary-unit-text-outline-color_internal), 1px 1px 0 var(--bolder-weather-card-primary-unit-text-outline-color_internal), -1px 1px 0 var(--bolder-weather-card-primary-unit-text-outline-color_internal);
-    }
-
+/*** TODAY SECTION **/
     bolder-weather-card-today {
       display: flex;
       height: var(--bolder-weather-card-today-height_internal);
@@ -292,7 +293,6 @@ ${myVar ? ':host{}' : ':host{}'}
       top: 0px;
       left: 0px;
     }
-
     .grow-img-container {
       max-width: 100%;
       max-height: 100%;
@@ -300,12 +300,10 @@ ${myVar ? ':host{}' : ':host{}'}
       position: relative;
       display: contents;
     }
-
     .grow-img {
       max-width: 100%;
       max-height: 100%;
     }
-
     .today-img-crop {
       max-width: calc(var(--bolder-weather-card-today-image-max-width_internal) + var(--bolder-weather-card-border-width_internal));
       max-height: calc(var(--bolder-weather-card-today-image-max-height_internal) + var(--bolder-weather-card-border-width_internal));
@@ -354,6 +352,34 @@ ${myVar ? ':host{}' : ':host{}'}
       text-shadow: -1px -1px 0 var(--bolder-weather-card-primary-text-outline-color_internal), 1px -1px 0 var(--bolder-weather-card-primary-text-outline-color_internal), 1px 1px 0 var(--bolder-weather-card-primary-text-outline-color_internal), -1px 1px 0 var(--bolder-weather-card-primary-text-outline-color_internal);
       flex: 1 0 0;
     }
+    .bolder-weather-card-temp-unit {
+      font-size: var(--bolder-weather-card-primary-unit-text-size_internal);
+      margin: var(--bolder-weather-card-primary-unit-text-space-above_internal) 0 var(--bolder-weather-card-primary-unit-text-space-below_internal) 0;
+      color: var(--bolder-weather-card-primary-unit-text-color_internal);
+      text-shadow: -1px -1px 0 var(--bolder-weather-card-primary-unit-text-outline-color_internal), 1px -1px 0 var(--bolder-weather-card-primary-unit-text-outline-color_internal), 1px 1px 0 var(--bolder-weather-card-primary-unit-text-outline-color_internal), -1px 1px 0 var(--bolder-weather-card-primary-unit-text-outline-color_internal);
+    }
+    .temp-and-unit {
+      display: flex;
+      align-items: center;
+    }
+    .temp-low-high {
+      font-size: var(--bolder-weather-card-primary-unit-text-size_internal);
+    }
+    .temp-low {
+      
+    }
+    .temp-high {
+      
+    }
+    .temp-dot {
+      width: var(--bolder-weather-card-primary-dot-size_internal);
+      height: var(--bolder-weather-card-primary-dot-size_internal);
+      background: var(--bolder-weather-card-primary-dot-color_internal);
+      border-radius: 50%;
+      margin-left: var(--bolder-weather-card-primary-element-space-between_internal);
+      margin-right: var(--bolder-weather-card-primary-element-space-between_internal);
+      border: 1px solid var(--bolder-weather-card-primary-dot-border-color_internal)
+    }
 
     bolder-weather-card-today-right-wrap-state {
       display: flex;
@@ -377,6 +403,18 @@ ${myVar ? ':host{}' : ':host{}'}
       flex: 0 0 0;
     }
 
+/*** HEADER SECTION **/
+    .card-header {
+      z-index: 1;
+      color: var(--bolder-weather-card-title-text-color_internal);
+      text-shadow: -1px -1px 0 var(--bolder-weather-card-title-text-outline-color_internal), 1px -1px 0 var(--bolder-weather-card-title-text-outline-color_internal), 1px 1px 0 var(--bolder-weather-card-title-text-outline-color_internal), -1px 1px 0 var(--bolder-weather-card-title-text-outline-color_internal);
+      font-size: var(--bolder-weather-card-title-text-size_internal);
+      line-height: calc(1.2 * var(--bolder-weather-card-title-text-size_internal));
+      padding: var(--bolder-weather-card-title-padding_internal);
+      font-weight: var(--bolder-weather-card-title-text-font-weight_internal);
+    }
+
+/*** FORECAST SECTION **/
     bolder-weather-card-forecast {
       display: block;
       background: var(--bolder-weather-card-forecast-background-color_internal);
