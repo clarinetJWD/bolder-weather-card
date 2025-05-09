@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.8.0...v1.8.1) (2025-05-09)
+
+
+### Bug Fixes
+
+* Fixes an issue where the decimal precision of weather and temperature sensors was being ignored. ([94d4bc4](https://github.com/clarinetJWD/bolder-weather-card/commit/94d4bc49fec66318bf60dfa764ac976c19ee0aa7))
+
 ## [1.8.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.7.0...v1.8.0) (2025-04-30)
 
 
