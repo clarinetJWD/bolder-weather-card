@@ -230,9 +230,10 @@ export class BolderWeatherCard extends LitElement {
   private renderToday (): TemplateResult {
     const weather = this.getWeather()
     const state = weather.state
-    const temp = this.config.show_decimal ? this.getCurrentTemperature() : roundIfNotNull(this.getCurrentTemperature())
+    const temp = this.getCurrentTemperature()
+    const tempPrecision = this.getConfiguredTemperaturePrecision(this.getMainTemperatureEntityName())
     const tempUnit = weather.attributes.temperature_unit
-    const apparentTemp = this.config.show_decimal ? this.getApparentTemperature() : roundIfNotNull(this.getApparentTemperature())
+    const apparentTemp = this.getApparentTemperature()
     const aqi = this.getAqi()
     const aqiColorClass = this.getAqiColor(aqi)
     const uv = this.getUv()
@@ -240,16 +241,17 @@ export class BolderWeatherCard extends LitElement {
     const humidity = roundIfNotNull(this.getCurrentHumidity())
     const icon = this.toIcon(state, 'crop', false)
     const weatherString = this.localize(`weather.${state}`)
-    const localizedTemp = temp !== null ? this.toConfiguredTempWithoutUnit(tempUnit, temp) : null
+    const localizedTemp = temp !== null ? this.toConfiguredTempWithoutUnit(tempUnit, temp).toFixed(tempPrecision) : null
     const localizedUnit = temp !== null ? this.getConfiguredTemperatureUnit() : null
-    const localizedApparent = apparentTemp !== null ? this.toConfiguredTempWithUnit(tempUnit, apparentTemp) : null
+    const localizedApparent = apparentTemp !== null ? this.toConfiguredTempWithUnit(tempUnit, apparentTemp, this.getConfiguredTemperaturePrecision(this.config.apparent_sensor)) : null
     const apparentString = this.localize('misc.feels-like')
     const aqiString = this.localize('misc.aqi')
     const uvString = this.localize('misc.uv')
     const daytime = this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
     const todayForecast = this.mergeForecasts(1, false)
-    const localizedLow = todayForecast[0] !== null ? this.toConfiguredTempWithoutUnit(tempUnit, todayForecast[0].templow) : null
-    const localizedHigh = todayForecast[0] !== null ? this.toConfiguredTempWithoutUnit(tempUnit, todayForecast[0].temperature) : null
+    const forecastPrecision = this.getConfiguredTemperaturePrecision(this.config.entity)
+    const localizedLow = todayForecast[0] !== null ? this.toConfiguredTempWithoutUnit(tempUnit, todayForecast[0].templow).toFixed(forecastPrecision) : null
+    const localizedHigh = todayForecast[0] !== null ? this.toConfiguredTempWithoutUnit(tempUnit, todayForecast[0].temperature).toFixed(forecastPrecision) : null
     let todayMainHtml: HTMLTemplateResult
     let topStrings = [
       this.config.hide_date ? undefined : this.date(),
@@ -353,16 +355,17 @@ export class BolderWeatherCard extends LitElement {
     const weatherIcon = this.toIcon(weatherState, 'fill', true)
     const tempUnit = this.getWeather().attributes.temperature_unit
     const isNow = hourly ? DateTime.now().hour === forecast.datetime.hour : DateTime.now().day === forecast.datetime.day
-    const minTempDay = Math.round(isNow && currentTemp !== null ? Math.min(currentTemp, forecast.templow) : forecast.templow)
-    const maxTempDay = Math.round(isNow && currentTemp !== null ? Math.max(currentTemp, forecast.temperature) : forecast.temperature)
+    const minTempDay = isNow && currentTemp !== null ? Math.min(currentTemp, forecast.templow) : forecast.templow
+    const maxTempDay = isNow && currentTemp !== null ? Math.max(currentTemp, forecast.temperature) : forecast.temperature
+    const forecastPrecision = this.config.show_decimal ? this.getConfiguredTemperaturePrecision(this.config.entity) : 0
 
     return html`
       <bolder-weather-card-forecast-row style="--col-one-size: ${(maxColOneChars * 0.5)}rem;">
         ${this.renderText(displayText)}
         ${this.renderIcon(weatherIcon)}
-        ${this.renderText(this.toConfiguredTempWithUnit(tempUnit, minTempDay), 'right')}
+        ${this.renderText(this.toConfiguredTempWithUnit(tempUnit, minTempDay, forecastPrecision), 'right')}
         ${this.renderForecastTemperatureBar(gradientRange, minTemp, maxTemp, minTempDay, maxTempDay, isNow, forecast.isdefault, currentTemp)}
-        ${this.renderText(this.toConfiguredTempWithUnit(tempUnit, maxTempDay))}
+        ${this.renderText(this.toConfiguredTempWithUnit(tempUnit, maxTempDay, forecastPrecision))}
       </bolder-weather-card-forecast-row>
     `
   }
@@ -653,19 +656,32 @@ export class BolderWeatherCard extends LitElement {
   }
 
   private toCelsius (temperatueUnit: TemperatureUnit, temperature: number): number {
-    return temperatueUnit === '°C' ? temperature : Math.round((temperature - 32) * (5 / 9))
+    return temperatueUnit === '°C' ? temperature : (temperature - 32) * (5 / 9)
   }
 
   private toFahrenheit (temperatueUnit: TemperatureUnit, temperature: number): number {
-    return temperatueUnit === '°F' ? temperature : Math.round((temperature * 9 / 5) + 32)
+    return temperatueUnit === '°F' ? temperature : (temperature * 9 / 5) + 32
   }
 
   private getConfiguredTemperatureUnit (): TemperatureUnit {
     return this.hass.config.unit_system.temperature as TemperatureUnit
   }
 
-  private toConfiguredTempWithUnit (unit: TemperatureUnit, temp: number): string {
-    const convertedTemp = this.toConfiguredTempWithoutUnit(unit, temp)
+  private getMainTemperatureEntityName (): string {
+    return this.config.temperature_sensor ?? this.config.entity
+  }
+
+  private getConfiguredTemperaturePrecision (entityName: string | undefined): number {
+    if (!this.config.show_decimal) return 0
+    if (entityName) {
+      const temperatureEntity = (this.hass as any).entities[entityName]
+      return temperatureEntity.display_precision ?? 0
+    }
+    return 0
+  }
+
+  private toConfiguredTempWithUnit (unit: TemperatureUnit, temp: number, precision: number): string {
+    const convertedTemp = precision === 0 ? Math.round(this.toConfiguredTempWithoutUnit(unit, temp)) : this.toConfiguredTempWithoutUnit(unit, temp).toFixed(precision)
     return convertedTemp + this.getConfiguredTemperatureUnit()
   }
 
