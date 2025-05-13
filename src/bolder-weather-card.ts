@@ -417,9 +417,9 @@ export class BolderWeatherCard extends LitElement {
     return [css`${unsafeCSS(GetCss())}`]
   }
 
-  private getGradientMap (): Map<number, Rgb> {
+  private getGradientMap (temperatureUnit: TemperatureUnit): Map<number, Rgb> {
     if (this.config.gradient_stops && this.config.gradient_stops.length > 0) {
-      const temps = this.config.gradient_stops.map((gradientStop) => gradientStop.temperature)
+      const temps = this.config.gradient_stops.map((gradientStop) => this.toCelsius(temperatureUnit, gradientStop.temperature))
       const colors = this.config.gradient_stops.map((gradientStop) => new Rgb(gradientStop.rgb_color[0], gradientStop.rgb_color[1], gradientStop.rgb_color[2]))
       const gradientMap: Map<number, Rgb> = new Map<number, Rgb>()
       for (let i = 0; i < this.config.gradient_stops.length; i++) {
@@ -447,7 +447,7 @@ export class BolderWeatherCard extends LitElement {
   private gradientRange (minTemp: number, maxTemp: number, temperatureUnit: TemperatureUnit): Rgb[] {
     const minTempCelsius = this.toCelsius(temperatureUnit, minTemp)
     const maxTempCelsius = this.toCelsius(temperatureUnit, maxTemp)
-    const gradientMap = this.getGradientMap()
+    const gradientMap = this.getGradientMap(temperatureUnit)
     const minVal = Math.max(roundDown(minTempCelsius, 10), min([...gradientMap.keys()]))
     const maxVal = Math.min(roundUp(maxTempCelsius, 10), max([...gradientMap.keys()]))
     return Array.from(gradientMap.keys())

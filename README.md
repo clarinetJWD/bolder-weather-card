@@ -117,7 +117,7 @@ uv_use_color: false
 use_day_night_colors: true
 use_time_as_primary: false
 gradient_stops: # specify the gradient colors and temperatures for the temperature bars. These are the defaults:
-  - temperature: -20
+  - temperature: -20    # Temperatures are in your local unit. This example shows Celcius.
     rgb_color: [0,60,98]
   - temperature: -10
     rgb_color: [120,162,204]
