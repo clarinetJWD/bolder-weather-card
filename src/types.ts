@@ -42,12 +42,17 @@ export interface BolderWeatherCardConfig extends LovelaceCardConfig {
   use_time_as_primary?: boolean
   show_low_high_on_primary?: boolean
   show_dots_between_primary_elements?: boolean
+  gradient_stops?: GradientStop[]
   styles?: StyleItem[]
 }
 
 export interface StyleItem {
   variable: string
   value: string
+}
+export interface GradientStop {
+  temperature: number
+  rgb_color: number[]
 }
 
 export interface MergedBolderWeatherCardConfig extends LovelaceCardConfig {
@@ -79,6 +84,7 @@ export interface MergedBolderWeatherCardConfig extends LovelaceCardConfig {
   use_time_as_primary: boolean
   show_low_high_on_primary: boolean
   show_dots_between_primary_elements: boolean
+  gradient_stops?: GradientStop[]
   styles?: StyleItem[]
 }
 

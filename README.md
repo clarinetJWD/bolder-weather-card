@@ -116,6 +116,23 @@ uv_sensor: sensor.uv_index
 uv_use_color: false
 use_day_night_colors: true
 use_time_as_primary: false
+gradient_stops: # specify the gradient colors and temperatures for the temperature bars. These are the defaults:
+  - temperature: -20
+    rgb_color: [0,60,98]
+  - temperature: -10
+    rgb_color: [120,162,204]
+  - temperature: 0
+    rgb_color: [164,195,210]
+  - temperature: 10
+    rgb_color: [121,210,179]
+  - temperature: 21
+    rgb_color: [101,209,68]
+  - temperature: 26
+    rgb_color: [252,245,112]
+  - temperature: 33
+    rgb_color: [255,150,79]
+  - temperature: 40
+    rgb_color: [255,192,159]
 styles:
   - variable: forecast-background-color
     value: red
@@ -159,6 +176,7 @@ styles:
 | uv_use_color          | boolean          | **Optional** | When true, the UV text is colored. When false, it uses the normal bottom text color.                                                                                                                                              | `true`    |
 | use_day_night_colors  | boolean          | **Optional** | When true, the card uses day night colors (blue, dark blue) and text colors to match. When false, uses your theme's normal colors.                                                                                                | `true`    |
 | styles                | StyleItem[]      | **Optional** | Allows setting theme style variables on a per-card basis without editing the theme.                                                                                                                                               | `[]`      |
+| gradient_stops        | GradientStop[]   | **Optional** | Overrides the default colors and temperature stops for the temperature bar gradient. See Full Configuration example for how to use.                                                                                               | `[]`      |
 
 ### Theme Variables
 

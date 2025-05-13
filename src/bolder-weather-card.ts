@@ -51,15 +51,6 @@ console.info(
   description: 'A weather card that uses large text and bold images for use on mounted dashboards that are viewed from a distance.'
 })
 
-const gradientMap: Map<number, Rgb> = new Map()
-  .set(-20, new Rgb(0, 60, 98)) // dark blue
-  .set(-10, new Rgb(120, 162, 204)) // darker blue
-  .set(0, new Rgb(164, 195, 210)) // light blue
-  .set(10, new Rgb(121, 210, 179)) // turquoise
-  .set(20, new Rgb(252, 245, 112)) // yellow
-  .set(30, new Rgb(255, 150, 79)) // orange
-  .set(40, new Rgb(255, 192, 159)) // red
-
 @customElement('bolder-weather-card')
 export class BolderWeatherCard extends LitElement {
   // https://lit.dev/docs/components/properties/
@@ -426,9 +417,37 @@ export class BolderWeatherCard extends LitElement {
     return [css`${unsafeCSS(GetCss())}`]
   }
 
+  private getGradientMap (): Map<number, Rgb> {
+    if (this.config.gradient_stops && this.config.gradient_stops.length > 0) {
+      const temps = this.config.gradient_stops.map((gradientStop) => gradientStop.temperature)
+      const colors = this.config.gradient_stops.map((gradientStop) => new Rgb(gradientStop.rgb_color[0], gradientStop.rgb_color[1], gradientStop.rgb_color[2]))
+      const gradientMap: Map<number, Rgb> = new Map<number, Rgb>()
+      for (let i = 0; i < this.config.gradient_stops.length; i++) {
+        if (i === 0) gradientMap.set(-200, colors[i])
+        gradientMap.set(temps[i], colors[i])
+        if (i === this.config.gradient_stops.length - 1) gradientMap.set(200, colors[i])
+      }
+      return gradientMap
+    } else {
+      const gradientMap = new Map()
+        .set(-200, new Rgb(0, 60, 98)) // dark blue
+        .set(-20, new Rgb(0, 60, 98)) // dark blue
+        .set(-10, new Rgb(120, 162, 204)) // darker blue
+        .set(0, new Rgb(164, 195, 210)) // light blue
+        .set(10, new Rgb(121, 210, 179)) // turquoise
+        .set(21, new Rgb(101, 209, 68)) // green
+        .set(26, new Rgb(252, 245, 112)) // yellow
+        .set(33, new Rgb(255, 150, 79)) // orange
+        .set(40, new Rgb(255, 192, 159)) // red
+        .set(200, new Rgb(255, 192, 159)) // red
+      return gradientMap
+    }
+  }
+
   private gradientRange (minTemp: number, maxTemp: number, temperatureUnit: TemperatureUnit): Rgb[] {
     const minTempCelsius = this.toCelsius(temperatureUnit, minTemp)
     const maxTempCelsius = this.toCelsius(temperatureUnit, maxTemp)
+    const gradientMap = this.getGradientMap()
     const minVal = Math.max(roundDown(minTempCelsius, 10), min([...gradientMap.keys()]))
     const maxVal = Math.min(roundUp(maxTempCelsius, 10), max([...gradientMap.keys()]))
     return Array.from(gradientMap.keys())
@@ -520,6 +539,7 @@ export class BolderWeatherCard extends LitElement {
       use_time_as_primary: config.use_time_as_primary ?? false,
       show_low_high_on_primary: config.show_low_high_on_primary ?? false,
       show_dots_between_primary_elements: config.show_dots_between_primary_elements ?? false,
+      gradient_stops: config.gradient_stops ?? [],
       styles: config.styles ?? []
     }
   }
