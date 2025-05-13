@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.9.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.8.1...v1.9.0) (2025-05-13)
+
+
+### Features
+
+* Added the ability to override gradient stops and colors ([a9c2a85](https://github.com/clarinetJWD/bolder-weather-card/commit/a9c2a85fb57ecb81456a5a1ee38109d9426ccd69))
+
+
+### Bug Fixes
+
+* Comfortable temperatures should now appear more "green" by default on the temperature bar. ([a9c2a85](https://github.com/clarinetJWD/bolder-weather-card/commit/a9c2a85fb57ecb81456a5a1ee38109d9426ccd69))
+* Fixed an issue where the gradient minimum and maximum colors could be white if the actual temperature range was below or above the gradient range. ([a9c2a85](https://github.com/clarinetJWD/bolder-weather-card/commit/a9c2a85fb57ecb81456a5a1ee38109d9426ccd69))
+
 ## [1.8.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.8.0...v1.8.1) (2025-05-09)
 
 
