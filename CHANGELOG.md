@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.9.0...v1.9.1) (2025-05-13)
+
+
+### Bug Fixes
+
+* Custom gradient temperatures now use the local unit (previously it required celcius) ([48e8e39](https://github.com/clarinetJWD/bolder-weather-card/commit/48e8e39a01a8faf4941970102a6278ccc265beaf))
+
 ## [1.9.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.8.1...v1.9.0) (2025-05-13)
 
 
