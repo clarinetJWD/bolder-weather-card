@@ -7,6 +7,7 @@ export function GetCss (): string {
       --bolder-weather-card-background_internal: var(--bolder-weather-card-background, var(--ha-card-background, var(--card-background-color)));
       --bolder-weather-card-background-day_internal: var(--bolder-weather-card-background-day, rgb(47, 152, 234));
       --bolder-weather-card-background-night_internal: var(--bolder-weather-card-background-night, rgb(15, 56, 118));
+      --bolder-weather-card-backdrop-filter-internal: var(--bolder-weather-card-backdrop-filter, var(--ha-card-backdrop-filter, none));
 
       --bolder-weather-card-border-color_internal: var(--bolder-weather-card-border-color, var(--ha-card-border-color, var(--divider-color, #e0e0e0)));
       --bolder-weather-card-border-color-day_internal: var(--bolder-weather-card-border-color-day, rgba(0,0,0,0.03));
@@ -269,6 +270,7 @@ export function GetCss (): string {
       border-color: var(--bolder-weather-card-border-color_internal);
       border-style: var(--bolder-weather-card-border-style_internal);
       border-width: var(--bolder-weather-card-border-width_internal);
+      backdrop-filter: var(--bolder-weather-card-backdrop-filter_internal);
     }
 
     .card-content {

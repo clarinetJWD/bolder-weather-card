@@ -224,6 +224,7 @@ Notes:
 | bolder-weather-card-background | The background color of the card when `use_day_night_colors` is off. | --ha-card-background || --card-background-color |
 | bolder-weather-card-background-day | The background color of the card during daytime when `use_day_night_colors` is on. ||| rgb(47, 152, 234) |
 | bolder-weather-card-background-night | The background color of the card during nighttime when `use_day_night_colors` is on. ||| rgb(15, 56, 118) |
+| bolder-weather-card-backdrop-filter | The backdrop filter of the card. | --ha-card-backdrop-filter || `none` |
 ||||||
 | bolder-weather-card-border-color | The border color of the card when `use_day_night_colors` is off. | --ha-card-border-color | --divider-color | #e0e0e0 |
 | bolder-weather-card-border-color-day | The border color of the card during daytime when `use_day_night_colors` is on. ||| rgba(0,0,0,0.03) |
