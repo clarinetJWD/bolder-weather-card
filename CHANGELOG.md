@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.10.0...v1.10.1) (2025-12-29)
+
+
+### Bug Fixes
+
+* Fixed typo in last release ([9d500f7](https://github.com/clarinetJWD/bolder-weather-card/commit/9d500f789cbdfe40b47615807f057e896b303c49))
+
 ## [1.10.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.9.1...v1.10.0) (2025-12-29)
 
 
