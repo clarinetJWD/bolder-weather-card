@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.9.1...v1.10.0) (2025-12-29)
+
+
+### Features
+
+* Added new Theme variable for bolder-weather-card-backdrop-filter ([9b959d3](https://github.com/clarinetJWD/bolder-weather-card/commit/9b959d339da3a741207458dbdc78bed17397edb3))
+
 ## [1.9.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.9.0...v1.9.1) (2025-05-13)
 
 
