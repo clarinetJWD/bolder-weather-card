@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.3](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.10.2...v1.10.3) (2025-12-29)
+
+
+### Bug Fixes
+
+* Fixed several color variables not defaulting to the non-day/night values when using day/night appearance. ([d618526](https://github.com/clarinetJWD/bolder-weather-card/commit/d618526c4678e25dbc96608741a501bdf77a3cfb))
+
 ## [1.10.2](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.10.1...v1.10.2) (2025-12-29)
 
 
