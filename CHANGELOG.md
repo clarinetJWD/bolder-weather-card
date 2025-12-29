@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.10.1...v1.10.2) (2025-12-29)
+
+
+### Bug Fixes
+
+* Forecast bar color not respecting day/night values when using day/night colors. ([974f34a](https://github.com/clarinetJWD/bolder-weather-card/commit/974f34a6ba1a2ac6db0ba2828e49d97abb08752a))
+
 ## [1.10.1](https://github.com/clarinetJWD/bolder-weather-card/compare/v1.10.0...v1.10.1) (2025-12-29)
 
 
