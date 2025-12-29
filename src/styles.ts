@@ -49,11 +49,11 @@ export function GetCss (): string {
       /***     Primary Dot (Separater) */
       --bolder-weather-card-primary-dot-size_internal: var(--bolder-weather-card-primary-dot-size, 14px);
       --bolder-weather-card-primary-dot-color_internal: var(--bolder-weather-card-primary-dot-color, var(--bolder-weather-card-primary-unit-text-color_internal));
-      --bolder-weather-card-primary-dot-color-day_internal: var(--bolder-weather-card-primary-dot-color-day, var(--bolder-weather-card-primary-unit-text-color-day_internal));
-      --bolder-weather-card-primary-dot-color-night_internal: var(--bolder-weather-card-primary-dot-color-night, var(--bolder-weather-card-primary-unit-text-color-night_internal));
+      --bolder-weather-card-primary-dot-color-day_internal: var(--bolder-weather-card-primary-dot-color-day, var(--bolder-weather-card-primary-dot-color_internal));
+      --bolder-weather-card-primary-dot-color-night_internal: var(--bolder-weather-card-primary-dot-color-night, var(--bolder-weather-card-primary-dot-color_internal));
       --bolder-weather-card-primary-dot-border-color_internal: var(--bolder-weather-card-primary-unit-dot-border-color, var(--bolder-weather-card-primary-text-outline-color_internal));
-      --bolder-weather-card-primary-dot-border-color-day_internal: var(--bolder-weather-card-primary-unit-dot-border-color-day, var(--bolder-weather-card-primary-text-outline-color-day_internal));
-      --bolder-weather-card-primary-dot-border-color-night_internal: var(--bolder-weather-card-primary-unit-dot-border-color-night, var(--bolder-weather-card-primary-text-outline-color-night_internal));
+      --bolder-weather-card-primary-dot-border-color-day_internal: var(--bolder-weather-card-primary-unit-dot-border-color-day, var(--bolder-weather-card-primary-dot-border-color_internal));
+      --bolder-weather-card-primary-dot-border-color-night_internal: var(--bolder-weather-card-primary-unit-dot-border-color-night, var(--bolder-weather-card-primary-dot-border-color_internal));
       --bolder-weather-card-primary-element-space-between_internal: var(--bolder-weather-card-primary-element-space-between, 0.5rem);
 
       /***     Secondary Text (Top and Bottom Default) */
@@ -156,24 +156,24 @@ export function GetCss (): string {
       --bolder-weather-card-forecast-bar-background-opacity_internal: var(--bolder-weather-card-forecast-bar-background-opacity, 0.1);
       --bolder-weather-card-forecast-bar-height_internal: var(--bolder-weather-card-forecast-bar-height, 1.5rem);
       --bolder-weather-card-forecast-bar-background-color_internal: var(--bolder-weather-card-forecast-bar-background-color, var(--bolder-weather-card-primary-text-color_internal));
-      --bolder-weather-card-forecast-bar-background-color-day_internal: var(--bolder-weather-card-forecast-bar-background-color-day, var(--bolder-weather-card-primary-text-color-day_internal));
-      --bolder-weather-card-forecast-bar-background-color-night_internal: var(--bolder-weather-card-forecast-bar-background-color-night, var(--bolder-weather-card-primary-text-color-night_internal));
+      --bolder-weather-card-forecast-bar-background-color-day_internal: var(--bolder-weather-card-forecast-bar-background-color-day, var(--bolder-weather-card-forecast-bar-background-color_internal));
+      --bolder-weather-card-forecast-bar-background-color-night_internal: var(--bolder-weather-card-forecast-bar-background-color-night, var(--bolder-weather-card-forecast-bar-background-color_internal));
       --bolder-weather-card-forecast-bar-dot-border-width_internal: var(--bolder-weather-card-forecast-bar-dot-border-width, 2px);
       --bolder-weather-card-forecast-bar-dot-border-color_internal: var(--bolder-weather-card-forecast-bar-dot-border-color, var(--bolder-weather-card-background_internal));
-      --bolder-weather-card-forecast-bar-dot-border-color-day_internal: var(--bolder-weather-card-forecast-bar-dot-border-color-day, var(--bolder-weather-card-background-day_internal));
-      --bolder-weather-card-forecast-bar-dot-border-color-night_internal: var(--bolder-weather-card-forecast-bar-dot-border-color-night, var(--bolder-weather-card-background-night_internal));
+      --bolder-weather-card-forecast-bar-dot-border-color-day_internal: var(--bolder-weather-card-forecast-bar-dot-border-color-day, var(--bolder-weather-card-forecast-bar-dot-border-color_internal));
+      --bolder-weather-card-forecast-bar-dot-border-color-night_internal: var(--bolder-weather-card-forecast-bar-dot-border-color-night, var(--bolder-weather-card-forecast-bar-dot-border-color_internal));
       --bolder-weather-card-forecast-bar-dot-background-color_internal: var(--bolder-weather-card-forecast-bar-dot-background-color, var(--bolder-weather-card-primary-text-color_internal));
-      --bolder-weather-card-forecast-bar-dot-background-color-day_internal: var(--bolder-weather-card-forecast-bar-dot-background-color-day, var(--bolder-weather-card-primary-text-color-day_internal));
-      --bolder-weather-card-forecast-bar-dot-background-color-night_internal: var(--bolder-weather-card-forecast-bar-dot-background-color-night, var(--bolder-weather-card-primary-text-color-night_internal));
+      --bolder-weather-card-forecast-bar-dot-background-color-day_internal: var(--bolder-weather-card-forecast-bar-dot-background-color-day, var(--bolder-weather-card-forecast-bar-dot-background-color_internal));
+      --bolder-weather-card-forecast-bar-dot-background-color-night_internal: var(--bolder-weather-card-forecast-bar-dot-background-color-night, var(--bolder-weather-card-forecast-bar-dot-background-color_internal));
       --bolder-weather-card-forecast-bar-dot-opacity_internal: var(--bolder-weather-card-forecast-bar-dot-opacity, 0.75);
 
       /***     Text */
       --bolder-weather-card-forecast-text-color_internal: var(--bolder-weather-card-forecast-text-color, var(--bolder-weather-card-primary-text-color_internal));
-      --bolder-weather-card-forecast-text-color-day_internal: var(--bolder-weather-card-forecast-text-color-day, var(--bolder-weather-card-primary-text-color-day_internal));
-      --bolder-weather-card-forecast-text-color-night_internal: var(--bolder-weather-card-forecast-text-color-night, var(--bolder-weather-card-primary-text-color-night_internal));
+      --bolder-weather-card-forecast-text-color-day_internal: var(--bolder-weather-card-forecast-text-color-day, var(--bolder-weather-card-forecast-text-color_internal));
+      --bolder-weather-card-forecast-text-color-night_internal: var(--bolder-weather-card-forecast-text-color-night, var(--bolder-weather-card-forecast-text-color_internal));
       --bolder-weather-card-forecast-text-outline-color_internal: var(--bolder-weather-card-forecast-text-outline-color, var(--bolder-weather-card-background_internal));
-      --bolder-weather-card-forecast-text-outline-color-day_internal: var(--bolder-weather-card-forecast-text-outline-color-day, var(--bolder-weather-card-background-day_internal));
-      --bolder-weather-card-forecast-text-outline-color-night_internal: var(--bolder-weather-card-forecast-text-outline-color-night, var(--bolder-weather-card-background-night_internal));
+      --bolder-weather-card-forecast-text-outline-color-day_internal: var(--bolder-weather-card-forecast-text-outline-color-day, var(--bolder-weather-card-forecast-text-outline-color_internal));
+      --bolder-weather-card-forecast-text-outline-color-night_internal: var(--bolder-weather-card-forecast-text-outline-color-night, var(--bolder-weather-card-forecast-text-outline-color_internal));
       --bolder-weather-card-forecast-text-size_internal: var(--bolder-weather-card-forecast-text-size, inherit);
       --bolder-weather-card-forecast-text-font-weight_internal: var(--bolder-weather-card-forecast-text-font-weight, inherit);
     }
